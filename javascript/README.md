@@ -1,4 +1,8 @@
-# Códigos javascript
+# Curso JavaScript
+
+- Acá tendré toda la información importante para repaso sobre JavaScript.
+
+## Códigos javascript
 
 - Symbol: Crea etiquetas o identificadores únicos:
 
@@ -106,3 +110,29 @@ console.log(favoriteSubjectSentence);
 console.log("Well, it was nice to talk to you. Have a nice day!");
 ```
 ---
+
+## tipificación dinámica y estática
+
+- JavaScript es un idioma de tipado dinámico, ósea que no hay que especificar el tipo de dato al declarar variables, pero, el tipo se determina según el valor asignado a la variable mientras el programa se ejecuta, esto permite cambiar el tipo de variables durante el programa.
+- tipado estático: C# o C++.
+- es dinámico y puedes hacer cambios de numero hacia un string.
+- el dinámico puede traer más errores a largo plazo.
+
+---
+
+## typeof y typeof null:
+
+- permite ver el tipo de dato de una variable o valor, siempre devuelve un string con el tipo.
+
+```javascript
+let isUserLoggedIn = true;
+console.log(typeof isUserLoggedIn); // "boolean"
+```
+- esto devuelve: "boolean"
+
+```javascript
+let exampleVariable = null;
+console.log(typeof exampleVariable); // "object"
+```
+- esto devuelve: "object", lo que es un error de javascript,
+
