@@ -30,5 +30,79 @@
 - type: especifica el tipo de input.
 - disabled, readonly y reqquired son tipos de booleanos.
 - disabled: deshabilita el input.
+- link: sirve para enlazar hojas de estilo.
+```html
+<link rel="stylesheet" href="./styles.css" />
+```
+- rel: especifica la relación entre el recurso enlazado y el HTML.
+- href: especifica la ubicación URL.
+todo esto dentro de head.
+
+---
+
+- ejemplo Google Font:
+```html 
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap"
+  rel="stylesheet"
+/>
+```
+- preconnect: para atributo.
+- rel: le dice al navegadr que cree una conexcion anticipada con el valor especificado en el atributo href.
+acelera tiempos de carga de recursos externos.
+
+---
+
+```html
+
+<link rel="icon" href="favicon.ico" />
+```
+- favicon: es la abreviatura de favorite icon, es un icono pequeño que se ve en a pestaña del navegador junto al título del sitio, muchos sitios lo usan para mostrar el icono de su marca.
+
+---
+
+- boilerplate: es una plantilla lista para la pagina web, incluye la estructura esencial del HTML.
+DOCTYPE: le dice a los navegadores que versión de HTML se esta utilizando.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--Important metadata goes here-->
+  </head>
+  <body>
+    <!--Headings, paragraphs, images, etc. go inside here-->
+  </body>
+</html>
+```
+
+engloba todo el contenido y puede especificar el idioma de la pagina, dentro de HTML estará head y body.
+head, tiene info importante detras
+
+```html
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document Title Goes Here</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+```
+
+- meta: tiene detalles sobre la codificación de caracteres.
+title: determina el texto en la pestaña o ventana del navegador.
+- body: acá va todo el contenido.
+
+```html
+
+<body>
+  <h1>I am a main title</h1>
+  <p>Example paragraph text</p>
+</body>
+
+````
+---
+
 
 
