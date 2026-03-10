@@ -15,8 +15,8 @@
 ```
 - alt: sirve para proporcionar un texto descriptivo para las imágenes.
 - atributos: va dentro de un elemento, dan información adicional.
--href: especifica la  URL de un enlace.
--target: especifica donde abrir el enlace.
+- href: especifica la  URL de un enlace.
+- target: especifica donde abrir el enlace.
 ```html
 <a href="https://www.freecodecamp.org" target="_blank">Visit freeCodeCamp</a>
 ```
@@ -50,7 +50,7 @@ todo esto dentro de head.
 />
 ```
 - preconnect: para atributo.
-- rel: le dice al navegadr que cree una conexcion anticipada con el valor especificado en el atributo href.
+- rel: le dice al navegadr que cree una conexion anticipada con el valor especificado en el atributo href.
 acelera tiempos de carga de recursos externos.
 
 ---
@@ -77,8 +77,7 @@ DOCTYPE: le dice a los navegadores que versión de HTML se esta utilizando.
   </body>
 </html>
 ```
-
-engloba todo el contenido y puede especificar el idioma de la pagina, dentro de HTML estará head y body.
+- engloba todo el contenido y puede especificar el idioma de la pagina, dentro de HTML estará head y body.
 head, tiene info importante detras
 
 ```html
@@ -89,7 +88,6 @@ head, tiene info importante detras
   <link rel="stylesheet" href="./styles.css" />
 </head>
 ```
-
 - meta: tiene detalles sobre la codificación de caracteres.
 title: determina el texto en la pestaña o ventana del navegador.
 - body: acá va todo el contenido.
@@ -101,8 +99,47 @@ title: determina el texto en la pestaña o ventana del navegador.
   <p>Example paragraph text</p>
 </body>
 
-````
+```
 ---
 
+- UTF-8: almacena caracteres como datos, 1 byte = 8 bits, admite cada carácter en el conjunto cd caractares Unicode, incluye caracteres y símbolos.
+```html
+<meta charset="UTF-8" />
+```
+- admite tildes, "e"(é).
+---
+comentarios: 
+```html
+"<!-- Hola -->"
+```
+- Posicionamiento en buscadores (Search Engine Optimization - SEO).
+---
+- main: representa el contenido principal del cuerpo de un documento HTML, debe ser unico y no debe repetirse en el documento.
+```html
+<main></main>
+```
+---
+- anidamiento: agregar dos espacios más a la derecha de donde estan anidados, como una sangría, que facilita la lectura del HTML.
+- antes de 
+```html
+<a href=""></a>
+```
+puede haber texto para complementar el texto del link, además puede ir dentro de un parrafo (p).
+---
+- section: define las secciones en un documento.
+- ul: unordered list, junto con "li" que es list(creo).
+- ol: ordered list, junto con "li" acá muestra la lista en números.
+- figure: representa contenido independiente y permite asociar una imagen a una descripción.
+- figcaption: se utiliza para añadir una descripción para describir una imagen anidada en un elemento figure.
+- em: enfásis en palabra especifica
+- todos estos con: "<></>".
+- strong: se utiliza para indicar una parte de un texto importante o urgente.
+- footer: pie de pagina.
 
+---
+
+- div: es un contenedor para agrupar elementos, se usa para tener orden en el CSS.
+- section: es semántico, el navegador captará su significado semántico y entenderá que debe tratarlo como una sección - en escritorios, móviles, lo que sea. Es parecido al div.
+
+---
 
