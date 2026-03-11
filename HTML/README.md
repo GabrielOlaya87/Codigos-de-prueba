@@ -50,7 +50,7 @@ todo esto dentro de head.
 />
 ```
 - preconnect: para atributo.
-- rel: le dice al navegadr que cree una conexion anticipada con el valor especificado en el atributo href.
+- rel: le dice al navegador que cree una conexion anticipada con el valor especificado en el atributo href.
 acelera tiempos de carga de recursos externos.
 
 ---
