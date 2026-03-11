@@ -37,9 +37,7 @@
 - rel: especifica la relación entre el recurso enlazado y el HTML.
 - href: especifica la ubicación URL.
 todo esto dentro de head.
-
 ---
-
 - ejemplo Google Font:
 ```html 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -52,17 +50,13 @@ todo esto dentro de head.
 - preconnect: para atributo.
 - rel: le dice al navegador que cree una conexion anticipada con el valor especificado en el atributo href.
 acelera tiempos de carga de recursos externos.
-
 ---
-
 ```html
 
 <link rel="icon" href="favicon.ico" />
 ```
 - favicon: es la abreviatura de favorite icon, es un icono pequeño que se ve en a pestaña del navegador junto al título del sitio, muchos sitios lo usan para mostrar el icono de su marca.
-
 ---
-
 - boilerplate: es una plantilla lista para la pagina web, incluye la estructura esencial del HTML.
 DOCTYPE: le dice a los navegadores que versión de HTML se esta utilizando.
 
@@ -101,7 +95,6 @@ title: determina el texto en la pestaña o ventana del navegador.
 
 ```
 ---
-
 - UTF-8: almacena caracteres como datos, 1 byte = 8 bits, admite cada carácter en el conjunto cd caractares Unicode, incluye caracteres y símbolos.
 ```html
 <meta charset="UTF-8" />
@@ -135,11 +128,52 @@ puede haber texto para complementar el texto del link, además puede ir dentro d
 - todos estos con: "<></>".
 - strong: se utiliza para indicar una parte de un texto importante o urgente.
 - footer: pie de pagina.
-
 ---
-
 - div: es un contenedor para agrupar elementos, se usa para tener orden en el CSS.
 - section: es semántico, el navegador captará su significado semántico y entenderá que debe tratarlo como una sección - en escritorios, móviles, lo que sea. Es parecido al div.
-
+- id: proporciona una identificación única para poder usar en CSS O JavaScript, no puede tener espacios.
+- En contraste con el atributo id, el valor del atributo class no necesita ser único y puede contener espacios.
+- ¿cuándo debes usar un id en lugar de una clase? Las clases son mejores para usar cuando quieres aplicar un conjunto de estilos a muchos elementos. Si quieres un elemento específico, es mejor usar un id porque esos valores deben ser únicos.
 ---
+- entidad html:es un conjunto de caracteres utilizados para representar un carácter reservado en HTML.
 
+- Referencias de carácter nombradas:
+```html
+&lt;p&gt;learning is fun&lt;/p&gt; 
+<p>learning is fun</p>
+```
+- si escribes esa primera linea de codigo, saldra ese texto.
+- más simbolos numerico decimal:
+&#60;
+&#169;
+&#174;
+```html
+&#60;
+&#169;
+&#174;
+```
+- más simbolos numerico hexadecimal: 
+&#x3C;
+&#x20AC;
+&#x03A9;
+```html
+&#x3C;
+&#x20AC;
+&#x03A9;
+```
+---
+- script: lee archivos de javascript externos, y permite programar javascript dentro de html
+```html
+<body>
+  <script>
+    alert("Welcome to README.md");
+  </script>
+</body>
+```
+- esto permite enlazar el html a un archivo javascript:
+```html
+<script src="path-to-javascript-file.js"></script>
+```
+- src: en este caso es para ubicar la ubicación del archvio.
+---
+- 
