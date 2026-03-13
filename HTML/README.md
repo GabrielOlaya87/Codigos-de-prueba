@@ -176,4 +176,81 @@ puede haber texto para complementar el texto del link, además puede ir dentro d
 ```
 - src: en este caso es para ubicar la ubicación del archvio.
 ---
-- 
+- SEO:  Optimización para Motores de Búsqueda, hace que sea más visible y tenga mejor posición en motores de busqueda.
+- Se usa meta para esto:
+```html
+<meta
+  name="description"
+  content="Discover expert tips and techniques for gardening in small spaces, choosing the right plants, and maintaining a thriving garden."
+/>
+```
+- description: se asegura que los navegadores, motores de búsqueda y otras herramientas web interpreten correctamente este metadato.
+- content: es donde colocarás tu descripción
+---
+- Opne graph: permite controlar cómo aparece el contenido de su sitio web en varias plataformas de redes sociales. Puede atraer usuarios a querer hacer clic e interactuar con su contenido. Puede establecer estas propiedades a través de una colección de elementos meta dentro de su sección head en HTML.
+
+La primera propiedad de OG importante para incluir sería el title. Aquí hay un ejemplo de cómo establecer el OG titltle:
+```html
+<meta content="freeCodeCamp.org" property="og:title" />
+```
+- La siguiente propiedad de OG importante sería el type. Aquí hay un ejemplo de cómo usar el OG type 
+```html
+<meta property="og:type" content="website" />
+```
+- type: representa el tipo de contenido que se comparte en redes sociales.
+- La tercera propiedad de OG importante sería el image. Aquí hay un ejemplo de cómo establecer el OG image:
+```html
+<meta
+  content="https://cdn.freecodecamp.org/platform/universal/fcc_meta_1920X1080-indigo.png"
+  property="og:image"
+/>
+```
+- La cuarta propiedad de OG importante sería el url. Aquí hay un ejemplo de cómo establecer el OG url:
+```html
+<meta property="og:url" content="https://www.freecodecamp.org" />
+```
+- Hay más propiedades de OG que puede establecer, como description, audio, video y locale. Sin embargo, el Open Graph url, image, type y title son las más importantes para incluir.
+- audio: soporta formatos de audio populares como mp3, wav y ogg.
+- video: soporta formatos mp4, ogg y webm.
+```html
+<audio src="https://cdn.freecodecamp.org/curriculum/js-music-player/cruising-for-a-musing.mp3"></audio>
+```
+- controls: atributo booleano que puede añadirse a un elemento para habilitar controles de reproducción integrados. Si se omite, no se mostrarán controles.
+- loop: atributo booleano que hace que el audio se reproduzca continuamente.
+- muted: Cuando está presente en el elemento audio, este atributo booleano iniciará el audio en un estado silenciado.
+```html
+<audio
+  src="https://cdn.freecodecamp.org/curriculum/js-music-player/can't-stay-down.mp3"
+  loop
+  controls
+  muted
+></audio>
+```
+- Tipos de archivos de audio: hay diferencias en qué navegadores soportan qué tipo. Para acomodar esto, puedes usar elementos source dentro del elemento audio, y el navegador seleccionará la primera fuente que comprenda.
+```html
+  <source src="audio.ogg" type="audio/ogg" />
+  <source src="audio.wav" type="audio/wav" />
+  <source src="audio.mp3" type="audio/mpeg" />
+</audio>
+```
+- El navegador empezará primero con el tipo ogg, y si no puede reproducir el audio, pasará al siguiente tipo en la lista.
+- autoplay: hace que el video se reproduzca automáticamente. 
+- Poster: Si deseas mostrar una imagen mientras el video se descarga.
+- para diferentes navegadores:
+```html
+<video
+  controls
+  width="400"
+  poster="https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217"
+>
+  <source
+    src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4"
+    type="video/mp4"
+  />
+  <source
+    src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.webm"
+    type="video/webm"
+  />
+  Your browser does not support the video tag.
+</video>
+```
