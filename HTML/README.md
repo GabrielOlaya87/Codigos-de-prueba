@@ -254,3 +254,75 @@ La primera propiedad de OG importante para incluir sería el title. Aquí hay un
   Your browser does not support the video tag.
 </video>
 ```
+---
+- Formas de optimizar: Usar WEBP o AVIF en vez de PNG o JPG.
+- propiedad intelectual: Estan protegidas por derechos de autor. 
+- No puedes usarlas a menos que hagas esto: obtener permiso por escrito del titular de los derechos de autor, comprar una licencia del titular de los derechos de autor, o incorporar la imagen de manera que se clasifique como uso legítimo.
+Ese tercer punto es complicado. El uso legítimo requiere que tu uso de la imagen sea tanto limitado como transformador. Algunos ejemplos de uso legítimo serían comentar o revisar el arte o crear una parodia de la imagen.
+- Algunas imágenes pueden estar bajo una licencia permisiva, como una licencia Creative Commons, o la licencia BSD que usa freeCodeCamp. Estas imágenes están disponibles para su uso en tu sitio web, pero deberás leer la licencia para comprender las reglas que debes seguir al usar estas imágenes.
+- Finalmente, algunas imágenes pueden estar liberadas al dominio público. No tiene derechos de autor y es libre de ser usada sin restricciones. Las imágenes específicamente licenciadas bajo la licencia Creative Commons 0 se consideran de dominio público.
+- La mayoría de los motores de búsqueda te permitirán filtrar los resultados de imágenes por licencia. También existen sitios como Pixabay y Unsplash, que ofrecen imágenes de libre uso. Siempre ten en cuenta los derechos de autor y la licencia cuando uses una imagen en tu sitio web.
+---
+- PNG Y JPG: formatos de imagen rasterizados, osea, se basan en píxeles, con los datos rastreando el valor de color en cada píxel.
+- SVG: gráfico vectorial escalable, rastrea datos basados en trazos y ecuaciones para trazar puntos, líneas y curvas. Se puede escalar a cualquier tamaño sin afectar la calidad, almacena datos en XML, es programable en HTML.
+```html
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="50" r="45" stroke="yellow" stroke-width="3" fill="blue" />
+  <circle cx="35" cy="40" r="5" fill="black" />
+  <circle cx="65" cy="40" r="5" fill="black" />
+  <path d="M35 65 Q50 80 65 65" stroke="black" stroke-width="4" fill="transparent" />
+</svg>
+```
+- svg: contiene todo el dibujo, circulos, lineas, etc.
+- circle: crea cara y ojos.
+- path: dibuja la sonrisa, crea una linea curva.
+- Font awesome: tiene muchos íconos de este estilo.
+- viewbox: ontrola qué parte de la imagen es visible dentro del SVG.
+```html
+<svg viewBox="0 0 50 50">
+</svg>
+```
+- Los dos primeros números (0 0) establecen la posición inicial del viewBox: la esquina superior izquierda (x e y).
+Los siguientes dos números (50 50) definen el ancho y alto del viewBox.
+---
+- elemento reemplazado: Su contenido es determinado por un recurso externo en lugar de por el CSS mismo, puede controlar la posición o el diseño de un elemento. Pero su CSS no puede modificar directamente el contenido de ese elemento.
+- Incluyen los elementos de imagen, iframe y video.
+- iframe: embeds an external site on your web page, youtube, mapas:
+```html
+<iframe
+  title="Map of the Royal Observatory, Greenwich, London"
+  width="300"
+  height="200"
+  src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&amp;layer=mapnik">
+</iframe>
+```
+- El elemento en sí es reemplazado por el objeto externo: el sitio. Su CSS puede cambiar la posición del sitio incrustado, pero no puede modificar el contenido del sitio.
+- Hay otros elementos reemplazados, como video y embed. Y algunos elementos se comportan como elementos reemplazados en circunstancias específicas:
+```html
+<input type="image" alt="Descriptive text goes here" src="example-img-url">
+```
+- Este tipo de input se considera un elemento reemplazado, pero otros tipos de input como text o email no son elementos reemplazados.
+---
+- iframe: Este elemento representa un marco en línea. Se usa para incrustar otro contenido HTML directamente dentro de la página HTML. Ese contenido HTML podría ser un video, un mapa, otro elemento HTML o incluso otras páginas web.
+```html
+<iframe
+  width="400"
+  height="400"
+  src="https://www.youtube.com/embed/PkZNo7MFNFg?si=-UBVIUNM3csdeiWF"
+  title="Learn JavaScript - Full Course for Beginners (YouTube video)"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+></iframe>
+```
+- allowfullscreen: permite al usuario mostrar en modo de pantalla completa.
+- es una buena práctica especificar un atributo title para el iframe, ya que es importante para la accesibilidad.
+- allow: Permite definir lo que un iframe puede o no puede hacer. Esto se llama una lista de permisos. Los elementos en una lista de permisos pueden separarse por puntos y comas o espacios, y ambos pueden usarse juntos.
+- Si desea incrustar HTML directo dentro del elemento iframe, debe usar el atributo srcdoc.
+- accelerometer: permite que el iframe use sensores de movimiento para que pueda detectar cosas como la inclinación y rotación del dispositivo. 
+- autoplay: permite que el video comience a reproducirse automáticamente.
+- clipboard-write: permite que el iframe escriba datos en el portapapeles del usuario.
+- encrypted-media, gyroscope y web-share: Estos tres permitirán el uso de extensiones de medios cifrados para proteger el video, otorgar acceso a los sensores de movimiento y orientación del dispositivo, y permitir compartir el contenido del iframe a través de los diálogos nativos de compartir del dispositivo.
+- referrerpolicy: Es la regla que determina cuánta información compartes cuando tu página se conecta a otra página.
+- strict-origin-when-cross-origin: Esto comparte la dirección completa en el mismo sitio, solo el nombre del sitio en otros sitios, y nada en sitios inseguros.
+
