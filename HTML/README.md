@@ -566,7 +566,9 @@ a:active {
 </form>
 ```
 - action: Especifica dónde se enviarán los datos del formulario al enviarlo. 
-- method: se utiliza para especificar el método HTTP a usar al enviar los datos del formulario. Los métodos más comunes son GET y POST.
+- method: se utiliza para especificar el método HTTP a usar al enviar los datos del formulario. Los métodos más comunes son:
+- GET: adjunta los datos a la URL (visibles, ideal para búsquedas/marcadores). 
+- POST: envía los datos en el cuerpo de la petición (invisibles, ideal para datos sensibles, formularios largos o subida de archivos).
 - input: recopila información específica, como nombres y correos electrónicos.
 - type: define el tipo de dato que se espera del usuario. En este caso, los datos serían texto plano.
 - checkbox: tipo caja para seleccionar.
@@ -832,6 +834,489 @@ Los dos encabezados de fila (Nora y Gino) tienen un scope de row.
   </tbody>
 </table>
 ```
+- Si un encabezado de columna o fila se extiende a través de múltiples celdas, el scope también se aplicará a cada una de las celdas individualmente.
 ```html
-
+<table>
+  <tbody>
+    <tr>
+      <td></td>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+    </tr>
+    <tr>
+      <th rowspan="2" scope="row">Dogs</th>
+      <th scope="row">Nora</th>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th scope="row">Gino</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th rowspan="2" scope="row">Cats</th>
+      <th scope="row">Lulu</th>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th scope="row">Elizabeth</th>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
 ```
+- En esta tabla, la celda con la edad de Nora (5) tendrá un encabezado de columna (Age) y dos encabezados de fila (Dogs y Nora). La edad de Gino (2) también tendrá un encabezado de columna (Age) y dos encabezados de fila (Dogs y Gino).
+- Tu objetivo siempre debería ser asegurarte de que los usuarios puedan acceder a esta información, incluso si sus lectores de pantalla pueden manejar estructuras de tabla complejas.
+- En cuanto al ancho de las celdas, se recomienda evitar usar valores fijos. Debes usar valores relativos en su lugar, como porcentajes. Además, intenta evitar definir la altura de las celdas. Esto permitirá a los usuarios ajustar el tamaño del texto para adaptarse a sus necesidades.
+- finalmente, deberías permitir que el navegador determine el ancho de la tabla siempre que sea posible, para reducir la necesidad de desplazamiento horizontal.
+---
+- ¿Por qué es importante que los elementos de entrada tengan una etiqueta asociada?: Las etiquetas ayudan a las personas con discapacidades, hacen los formularios más amigables para todos y, en última instancia, mejoran las tasas de conversión de formularios.
+- Los lectores de pantalla a menudo dependen de las etiquetas para describir el propósito de los campos de entrada. Para que esto funcione correctamente, la etiqueta debe estar asociada programáticamente con el input. Aunque hay varias formas de hacer eso, la más común es usar el elemento HTML label.
+---
+- propósito de WAI-ARIA y cómo funciona: Hacer accesible el contenido estático puede ser relativamente sencillo, pero el contenido dinámico puede ser más desafiante. Para esto entra en juego WAI-ARIA.
+- WAI-ARIA: significa Iniciativa de Accesibilidad Web - Aplicaciones de Internet Ricas Accesibles. Es una especificación que mejora la accesibilidad para contenido dinámico y componentes de interfaz de usuario (UI).
+- WCAG y WAI-ARIA no son lo mismo. WCAG proporciona pautas generales para la accesibilidad web, mientras que WAI-ARIA ofrece reglas específicas para hacer que el contenido dinámico e interactivo sea accesible para los usuarios de tecnologías de asistencia. Por lo tanto, el propósito principal de WAI-ARIA es mejorar la accesibilidad para contenido dinámico y componentes de UI que no tienen equivalentes nativos en HTML.
+- funciona introduciendo un conjunto de atributos que puede añadir a elementos HTML para proporcionar información semántica adicional. Estos atributos se categorizan en roles, estados y propiedades.
+- El rol ARIA define el propósito de un elemento dentro de un sitio web o aplicación web:
+```html
+<div role="button">Click Me</div>
+```
+- está indicando a la tecnología de asistencia que el elemento es un botón. Sin embargo, los roles no proporcionan ninguna funcionalidad. Simplemente dar a este div un role de button no hará que actúe como un botón. Para hacerlo ver y comportarse como un botón, tendría que usar CSS y JavaScript para obtener el resultado deseado. Siempre es mejor usar el elemento nativo button o input con type="button".
+- Las propiedades ARIA proporcionan detalles adicionales sobre los elementos. Por ejemplo, la propiedad aria-labelledby le permite conectar un elemento a una etiqueta específica:
+```html
+<h2 id="header-id">About freeCodeCamp</h2>
+<button id="button-id" aria-labelledby="header-id button-id">Learn More</button>
+```
+- Esto hará que los elementos sean comprensibles y navegables para los usuarios de tecnologías de asistencia.
+- Utilice WAI-ARIA solo cuando HTML se quede corto, y no olvide probar con tecnologías de asistencia como lectores de pantalla, o haga que personas con discapacidades prueben su trabajo. Además, asegúrese de que sus estados y propiedades WAI-ARIA actualicen con el contenido en tiempo real.
+---
+- ARIA stands for Accessible Rich Internet Applications.
+- roles ARIA: especifican el significado semántico de los elementos HTML. Son esenciales para hacer el contenido web accesible a personas que usan tecnologías de asistencia, como lectores de pantalla.
+- HTML tiene elementos semánticos y no semánticos, basados en si transmiten significado sobre su contenido.
+- Muchos elementos HTML semánticos ya tienen un rol ARIA asignado por defecto. Por ejemplo, el elemento button tiene un rol ARIA predeterminado de button.
+- Para especificar el rol ARIA de un elemento, solo necesita agregar el atributo role, como este role="ARIA role", donde el valor es el nombre de un rol en la especificación ARIA.
+- Es importante notar que especificar un rol en un elemento solo hace una cosa: informa a la tecnología asistiva sobre el propósito del elemento. No agrega ninguna funcionalidad o comportamiento al elemento. Si la gente espera que un rol se comporte de cierta manera, depende de usted, el desarrollador, agregar ese comportamiento esperado.
+- agregar un role de button a un div no lo hace automáticamente clicable con un ratón o usable con un teclado. Es responsabilidad del desarrollador agregar el comportamiento esperado que permita al div actuar como un botón, y en la mayoría de los casos, es mejor usar el elemento button.
+- Hay seis categorías principales de roles ARIA:
+- Roles de estructura de documento: Definen la estructura general de la página web. Con estos roles, las tecnologías de asistencia pueden entender las relaciones entre las diferentes secciones y ayudar a los usuarios a navegar por el contenido. Sin embargo, la mayoría de los roles de estructura de documento no se utilizan en el desarrollo web moderno porque los navegadores ya soportan elementos HTML semánticos equivalentes, que deben priorizarse siempre que sea posible. Debe especificar los roles que no tienen un elemento semántico equivalente. Por ejemplo: toolbar, tooltip, feed, math, presentation, none, y note.
+- También notará que el div tiene un atributo aria-label. El valor de este atributo debería ser una cadena que representa la expresión.
+```html
+<link rel="stylesheet" href="styles.css">
+
+<div role="math" aria-label="x squared + y squared = 3">
+  x<sup>2</sup> + y<sup>2</sup> = 3
+</div>
+```
+- Roles de widget: definen el propósito y funcionalidad de los elementos interactivos, como las barras de desplazamiento. Ejemplos de roles de widget incluyen scrollbar, searchbox, separator (cuando es enfocable), slider, spinbutton, switch, tab, tabpanel, y treeitem. Algunos de estos roles tienen elementos semánticos equivalentes. Debe priorizar el elemento semántico sobre el rol si existe uno. Por ejemplo, debes preferir usar el elemento HTML button en lugar de agregar un role de button a un div.
+```html
+<link rel="stylesheet" href="styles.css">
+
+<div class="search-container" role="search">
+  <label for="searchbox" class="visually-hidden">Search</label>
+
+  <div
+    id="searchbox" class="searchbox" role="searchbox" aria-label="Search the site" tabindex="0" contenteditable="true">
+  </div>
+
+  <button type="button" aria-label="Submit search">Search</button>
+</div>
+```
+- Roles de punto de referencia: Los roles de punto de referencia clasifican y etiquetan las secciones principales de una página web. Los lectores de pantalla los utilizan para proporcionar una navegación conveniente a secciones importantes de una página. Debe usarlos con moderación para mantener el diseño general simple y fácil de entender. Ejemplos de roles de punto de referencia son banner, complementary, contentinfo, form, main, navigation, region, y search. Cada uno de estos roles tiene un equivalente en HTML, como header, footer, aside, form, main, nav, section, y search. Si utiliza los elementos HTML adecuados para definir las secciones de su página, entonces no es necesario añadir explícitamente el atributo role a estos elementos.
+```html
+<link rel="stylesheet" href="styles.css">
+
+<div role="banner" class="site-banner">
+  <h1>Accessible Web Design</h1>
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Articles</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+</div>
+```
+```css
+.site-banner {
+  background-color: #007acc;
+  color: #fff;
+  padding: 1em 1.5em;
+  border-radius: 4px;
+}
+
+.site-banner h1 {
+  margin: 0 0 0.5em;
+  font-size: 1.5em;
+}
+
+.site-banner nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1em;
+}
+
+.site-banner nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.site-banner nav a:hover {
+  text-decoration: underline;
+}
+```
+- Roles de región activa: definen elementos con contenido que cambiará dinámicamente. De esta manera, los lectores de pantalla y otras tecnologías de asistencia pueden anunciar cambios a usuarios con discapacidades visuales. Estos roles incluyen: alert, log, marquee, status, y timer.
+```html
+<link rel="stylesheet" href="styles.css">
+
+<div class="status-demo">
+  <button id="update-status-btn">Check Status</button>
+  <div id="status-msg" role="status" class="status-message">
+    No updates yet.
+  </div>
+</div>
+
+<script src="index.js"></script>
+```
+```css
+.status-demo {
+  margin-top: 1em;
+}
+
+button {
+  padding: 0.5em 1em;
+  background-color: #007acc;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005fa3;
+}
+
+.status-message {
+  margin-top: 0.75em;
+  padding: 0.75em;
+  background-color: #e8f4ff;
+  border: 1px solid #b3d8ff;
+  border-radius: 4px;
+  font-weight: 500;
+}
+```
+```javascript
+const button = document.getElementById("update-status-btn");
+const statusMessage = document.getElementById("status-msg");
+
+button.addEventListener("click", () => {
+  statusMessage.textContent = "Your upload has completed successfully.";
+});
+```
+- Roles de ventana: definen sub-ventanas, como cuadros de diálogo modales emergentes. Estos roles incluyen alertdialog y dialog. Tenga en cuenta que ahora se considera una buena práctica utilizar el elemento HTML dialog y sus métodos JavaScript asociados en lugar de crear un diálogo manualmente.
+```html
+<link rel="stylesheet" href="styles.css">
+
+<div role="banner" class="site-banner">
+  <h1>Accessible Web Design</h1>
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Articles</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+</div>
+```
+```css
+.site-banner {
+  background-color: #007acc;
+  color: #fff;
+  padding: 1em 1.5em;
+  border-radius: 4px;
+}
+
+.site-banner h1 {
+  margin: 0 0 0.5em;
+  font-size: 1.5em;
+}
+
+.site-banner nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1em;
+}
+
+.site-banner nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.site-banner nav a:hover {
+  text-decoration: underline;
+}
+```
+- Roles de región activa: definen elementos con contenido que cambiará dinámicamente. De esta manera, los lectores de pantalla y otras tecnologías de asistencia pueden anunciar cambios a usuarios con discapacidades visuales. Estos roles incluyen: alert, log, marquee, status, y timer.
+```html
+<link rel="stylesheet" href="styles.css">
+
+<button id="open-dialog">Open Dialog</button>
+
+<div id="custom-dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title" class="dialog">
+  <div class="dialog-content">
+    <h3 id="dialog-title">Confirm Action</h3>
+    <p>Are you sure you want to delete this file?</p>
+    <div class="dialog-actions">
+      <button id="confirm-btn">Yes</button>
+      <button id="close-dialog">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script src="index.js"></script>
+```
+```css
+body {
+  font-family: Arial, sans-serif;
+  margin: 2em;
+}
+
+button {
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #007acc;
+  color: white;
+  font-size: 1em;
+}
+
+button:hover {
+  background-color: #005fa3;
+}
+
+.dialog {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  justify-content: center; 
+  align-items: center;   
+  z-index: 1000;
+}
+
+.dialog-content {
+  background-color: white;
+  padding: 1.5em;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5em;
+  margin-top: 1em;
+}
+```
+```javascript
+const dialog = document.getElementById("custom-dialog");
+const openBtn = document.getElementById("open-dialog");
+const closeBtn = document.getElementById("close-dialog");
+const confirmBtn = document.getElementById("confirm-btn");
+
+openBtn.addEventListener("click", () => {
+  dialog.style.display = "flex";
+});
+
+closeBtn.addEventListener("click", () => {
+  dialog.style.display = "none";
+});
+
+confirmBtn.addEventListener("click", () => {
+  alert("File deleted.");
+  dialog.style.display = "none";
+});
+```
+- Roles abstractos: Estos roles ayudan a organizar el documento. Solo están destinados a ser utilizados internamente por el navegador, no por los desarrolladores, por lo que debe saber que existen, pero no debe usarlos en sus sitios web o aplicaciones web.
+- Con roles ARIA, puede crear sitios web y aplicaciones web accesibles e inclusivos. Proporcionan información semántica sobre el propósito y la función de los elementos HTML.
+- Los lectores de pantalla y otras tecnologías de asistencia utilizan esta información para ayudar a los usuarios a comprender el contenido de su página y establecer expectativas sobre cómo usarlo.
+---
+- ¿Cuáles son las funciones de los atributos aria-label y aria-labelledby?: Para las personas que usan lectores de pantalla, los atributos aria-label y aria-labelledby proporcionan información crucial sobre elementos de la página que podrían ser poco claros o invisibles.
+- aria-label: es una etiqueta invisible para elementos interactivos. Añade una etiqueta de texto a un elemento que los lectores de pantalla pueden leer, es especialmente útil para elementos que no tienen texto visible pero que aún necesitan ser descritos por lectores de pantalla. Por ejemplo, los botones con solo iconos a menudo necesitan aria-label para transmitir su propósito.
+```html
+<button aria-label="Search">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+```
+- un lector de pantalla puede anunciar este botón como Buscar, botón, aunque el botón solo contiene un icono. El atributo aria-label indica a los lectores de pantalla qué texto usar en lugar del icono.
+- aria-labelledby: hace exactamente lo mismo que el atributo aria-label, pero en lugar de definir el texto directamente en el atributo, se usa una referencia al texto que ya existe en la página. El texto existente debe tener un atributo id, que se usará como el valor de referencia en el atributo aria-labelledby.
+```html
+<input type="text" aria-labelledby="search-btn">
+<button type="button" id="search-btn">Search</button>
+```
+- el texto del botón se está utilizando como la etiqueta para la entrada de búsqueda. Los lectores de pantalla anunciarán la entrada como algo parecido a Buscar, editar. Si luego decides cambiar el texto del botón a Encontrar, la etiqueta para la entrada se actualizará automáticamente al nuevo texto, ya que está referenciando el texto del botón. También es posible combinar múltiples valores de id en un único valor de atributo aria-labelledby. 
+```html
+<div>
+  <span id="volume-label">Volume</span>
+  <span id="volume-details">Adjust the volume level</span>
+  <input
+    type="range" min="0" max="100" value="30" aria-labelledby="volume-label volume-details">
+</div>
+```
+- Para el deslizador, el lector de pantalla buscará el contenido de los elementos volume-label y volume-details y anunciará Volumen Ajustar el nivel de volumen.
+- Entonces, ¿cuál deberías usar? Dado que ambos proporcionan la misma funcionalidad, se puede usar cualquiera de ellos, pero puede haber algunas ventajas al usar aria-labelledby sobre aria-label:
+- Si alguien está usando un servicio de traducción para traducir el contenido de tu página, el texto en un atributo aria-label puede no ser siempre traducido.
+- Usar aria-labelledby también puede ayudar a prevenir una discordancia entre el texto de la etiqueta visible y la etiqueta invisible para los usuarios de lectores de pantalla, ya que al actualizar el texto visible se actualizará automáticamente la etiqueta invisible.
+- aria-labelledby puede facilitar mucho la creación programática de etiquetas invisibles complejas que consisten en múltiples fuentes de texto.
+- Una última nota, no uses aria-label y aria-labelledby en un elemento al mismo tiempo. En este caso, la etiqueta invisible para los lectores de pantalla siempre será determinada por aria-labelledby y aria-label será completamente ignorada.
+---
+- aria-hidden y cómo funciona: Si alguna vez necesita mostrar contenido mientras lo oculta al mismo tiempo de personas que usan tecnología asistiva, como lectores de pantalla, puede usar el atributo aria-hidden. Solo necesita agregarlo al elemento HTML que desea ocultar y establecer su valor en true, como puede ver aquí: aria-hidden="true". Este atributo oculta el elemento y todos sus hijos del árbol de accesibilidad, manteniéndolos visibles en la página. Los casos de uso comunes incluyen: Iconos e imágenes que solo tienen un propósito decorativo. Contenido duplicado.
+- solo oculta contenido de la tecnología asistiva, como los lectores de pantalla. Si el contenido debe estar oculto para todos, entonces no debe usar aria-hidden para ocultarlo. Por ejemplo, un menú hamburguesa que esté actualmente colapsado debe ocultarse para todos los usuarios de teclado, no solo para los usuarios de lectores de pantalla. En este caso, podría establecer la propiedad CSS display en none en el menú para eliminarlo del DOM cuando esté colapsado.
+- No debe usar aria-hidden para ocultar un elemento que es enfocable con el teclado. El atributo aria-hidden solo elimina el elemento del árbol de accesibilidad. No lo elimina del DOM. Por lo tanto, todavía será posible que los usuarios de lectores de pantalla tabulen al elemento, pero su lector de pantalla no anunciará el elemento, provocando efectivamente que se centren en "nada".
+```html
+<head>
+  <!-- Font Awesome CDN -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css"
+  />
+</head>
+
+<button>
+  <i class="fa-solid fa-gear" aria-hidden="true"></i>
+  <span class="label">Settings</span>
+</button>
+```
+- Se usa para ocultar elementos de personas que usan tecnología asistiva, como los usuarios de lectores de pantalla.
+- El caso de uso de aria-hidden es muy limitado y debería restringirse principalmente a hacer la experiencia más limpia para los usuarios de lectores de pantalla al eliminar información puramente decorativa o duplicada. No use aria-hidden para ocultar contenido que no cree que interesará a los usuarios de lectores de pantalla. Los usuarios de lectores de pantalla merecen tener acceso a toda la información en la página.
+- No necesita usar aria-hidden cuando:
+- El elemento HTML ya tiene un atributo hidden.
+- El elemento o el ancestro del elemento ya está oculto con display: none.
+- El elemento o el ancestro del elemento ya está oculto con visibility: hidden.
+- En estos tres casos, el elemento ya está eliminado del DOM y por lo tanto oculto del árbol de accesibilidad, por lo que el atributo aria-hidden no es necesario.
+---
+- aria-describedby y cómo funciona: Se utiliza para proporcionar información adicional sobre un elemento a usuarios de lectores de pantalla, haciendo referencia a contenido existente en la página. Crea una asociación programática entre el elemento y el contenido (conocido técnicamente como una descripción accesible), que los lectores de pantalla pueden usar para informar a los usuarios sobre la información adicional cuando interactúan con el elemento.
+- El uso más común de aria-describedby es para asociar instrucciones y mensajes de error con campos de entrada de formularios. Debido a los varios métodos que tienen los usuarios de lectores de pantalla para navegar una página, es posible que se pierdan estos mensajes al moverse entre entradas. Usar aria-describedby ayuda a garantizar que los oigan.
+```HTML
+<link rel="stylesheet" href="styles.css">
+
+<form>
+  <label for="password">Password:</label>
+  <input type="password" id="password" aria-describedby="password-help" />
+  <p id="password-help">Your password must be at least 8 characters long.</p>
+</form>
+
+<script src="index.js"></script>
+```
+```CSS
+#password-help {
+  color: red;
+}
+```
+```JAVASCRIPT
+const passwordEl = document.getElementById("password");
+const passwordHelpText = document.getElementById("password-help");
+
+passwordEl.addEventListener("input", (e) => { 
+  const userInput = e.target.value;
+  passwordHelpText.style.color = userInput.length >= 8 ? "green" : "red";
+});
+```
+- La contraseña está oculta en la ventana de vista previa. También deberías ver que el texto password-help permanece en rojo hasta que ingreses 8 o más caracteres en la entrada.
+- es un atributo poderoso que se puede usar para ayudar a garantizar que la información adicional sobre un elemento se proporcione a los usuarios de lectores de pantalla cuando interactúan con el elemento. Es más comúnmente utilizado para asociar instrucciones y mensajes de error con campos de entrada de formularios para reducir la posibilidad de que los usuarios de lectores de pantalla se pierdan estos mensajes mientras navegan por el formulario.
+---
+- range: para crear el control deslizante de volumen.
+- el atributo alt y cuáles son algunos ejemplos de buen texto alt: Texto alternativo, a menudo abreviado como alt text, es una breve descripción textual de una imagen. Proporciona información esencial sobre la imagen para usuarios que no pueden verla, como personas que utilizan lectores de pantalla y otras tecnologías de asistencia.  también es utilizado por los motores de búsqueda para entender las imágenes. Algunos navegadores también pueden mostrarlo cuando una imagen no se carga correctamente. Esto puede suceder cuando el archivo de imagen falta o cuando el usuario tiene problemas de conectividad. Por lo tanto, es útil para muchos propósitos diferentes.
+```html
+<img src="puppy.png" alt="Un cachorro blanco y negro con un collar naranja descansa sobre su vientre en la arena, mirando hacia un lado. Una pelota naranja brillante reposa cerca de sus patas delanteras." />
+```
+- Ahora que sabe qué hace un buen y mal alt texto, veamos algunas de las mejores prácticas. Debe intentar mantener el alt texto corto. Debería ser lo suficientemente detallado para entender la imagen, pero no tan largo que se vuelva confuso. No debería intentar describir cada pequeño detalle. Céntrese en los aspectos más importantes de la imagen. Generalmente, no necesitas comenzar con "imagen de" o "foto de." Puedes empezar la descripción directamente. Además, si hay texto similar alrededor de la imagen, no necesita escribirlo nuevamente. Generalmente se recomienda terminar el texto alt con un punto para consistencia. Si la imagen es un enlace a otra página, en lugar de describir la imagen en sí, el alt texto debería describir qué ocurrirá si los usuarios hacen clic en ella.
+- Cada imagen en su sitio web debería tener un atributo alt, incluso si está vacío. Si omite el atributo alt por completo, algunos lectores de pantalla leerán el nombre del archivo en su lugar, lo cual puede distraer a las personas que usan tecnologías de asistencia, por lo que no se recomienda.
+---
+¿Cuáles son los beneficios de accesibilidad de un texto de enlace adecuado y cuáles son algunos ejemplos de textos de enlace adecuados?: El primer beneficio visible de un buen texto de enlace es que facilita que todos encuentren la información rápidamente. Los enlaces descriptivos ayudan a los usuarios a saber hacia dónde se dirigen y qué accederán. Esto asegura que el usuario no se sienta perdido y mejora la experiencia de usuario en general. Para aquellos que utilizan lectores de pantalla, un texto de enlace claro y descriptivo es un imperativo. Los lectores de pantalla leen el texto del enlace en voz alta, por lo que un texto como "Lea nuestra guía de accesibilidad" es mucho mejor que "Haga clic aquí."
+- buenas maneras de hacer que el contenido de audio y video sea accesible: lo primero que debe considerar es agregar subtítulos o leyendas a su contenido de video. Las leyendas proporcionan la versión de texto de las palabras habladas y los sonidos no verbales importantes, como música o risas, sincronizados con el video. 
+- Para agregar leyendas o subtítulos a su contenido de video o audio, puede usar el elemento track:
+```html
+<video
+  width="400"
+  height="300"
+  controls
+  src="https://cdn.freecodecamp.org/curriculum/labs/what-is-the-map-method-and-how-does-it-work.mp4"
+>
+  <track
+    src="captions.vtt"
+    kind="captions"
+    srclang="en"
+    label="English"
+  />
+</video>
+
+<audio controls src="sample.mp3">
+  <track
+    src="captions.vtt"
+    kind="captions"
+    srclang="en"
+    label="English"
+  />
+</audio>
+```
+- kind: se utiliza para indicar al elemento track cómo debe usarse. Los valores válidos para el atributo kind incluyen captions, subtitles, chapters y metadata
+- srclang representa el idioma para el contenido del track. 
+- El atributo label es un título descriptivo para el texto de la pista que los navegadores utilizan para identificarlo y mostrarlo en la lista de pistas de texto disponibles.
+- Si está publicando videos en una plataforma de intercambio de videos como YouTube o Vimeo, disponen de subtítulos y transcripciones automáticas para videos. Pero si no está satisfecho, puede usar servicios como veed.io, Rev, Amara y Descript.
+- Otras maneras de hacer que su contenido de video y audio sea accesible incluyen:
+- Agregar una superposición de lenguaje de señas a los videos para personas sordas y con problemas de audición.
+- Proporcionar controles de volumen y velocidad.
+- Asegurar un buen contraste para el texto en pantalla.
+- Ofrecer múltiples formatos
+---
+- algunas formas de hacer que las aplicaciones web sean accesibles mediante teclado: Muchos usuarios dependen de la tecla Tab para moverse a través de elementos interactivos en una página web. Por defecto, los navegadores permiten que los usuarios naveguen con tabulador por elementos como enlaces, botones y campos de formulario en el orden en que aparecen en el HTML. Esto se llama el orden natural de tabulación.
+- puede que quieras ajustar qué elementos son enfocables o cambiar su orden de enfoque. El atributo tabindex te permite hacer esto.
+```html
+<element tabindex="number">Element Text</element>
+```
+- tabindex determina cómo se comporta el elemento en la navegación con teclado:
+- tabindex="0" añade el elemento al orden natural de tabulación.
+- Tabular moverá el foco del button al div, luego al enlace, siguiendo su orden en el HTML.
+- tabindex="-1" hace que un elemento sea enfocables programáticamente. Esto es útil para gestionar el foco en elementos que normalmente no son enfocables, como encabezados, contenedores, diálogos o mensajes de error.
+- Cuando el tabindex es mayor que 0 establece un orden de tabulación personalizado. Así que los elementos con valores positivos más bajos se enfocan primero.
+- al usar tabulación se enfocará primero el input con tabindex="1", luego el 2 y después el 3, sin importar su orden en el HTML:
+```html
+<input tabindex="2">
+<input tabindex="1">
+<input tabindex="3">
+```
+- accesskey: Lo puedes usar para hacer que tu proyecto web sea accesible mediante el teclado. Te permite definir una tecla que enfoca o activa un elemento en particular.
+```HTML
+<button accesskey="S">Save</button>
+<button accesskey="C">Cancel</button>
+<a href="index.html" accesskey="H">Home</a>
+```
+- Tenga en cuenta que la combinación exacta de teclas para activar el accesskey puede variar dependiendo del navegador y sistema operativo. Suele ser ALT + Tecla Especificada en Windows.
+```HTML
+<link href="styles.css" rel="stylesheet">
+<button>Example button</button>
+```
+```CSS
+button:focus {
+  outline: 2px solid #005fcc;
+}
+```
+- La propiedad outline se usa para definir el contorno alrededor del elemento. Este ejemplo establece el contorno en una línea sólida azul con 2 píxeles de grosor.
+- debes evitar trampas de teclado, que ocurren cuando un usuario no puede mover el enfoque lejos de un cierto elemento en componentes como modales y ventanas emergentes.
+---
+- article: Representa contenido autónomo.
+- aside: Usado para barras laterales o contenido relacionado.
+- input: se utiliza para crear un campo de entrada para la entrada del usuario.
