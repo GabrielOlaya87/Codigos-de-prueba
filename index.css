@@ -1,13 +1,60 @@
-* {
-    background-color: aliceblue;
-    text-align: left;
-}
-
 .links {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
-    background-color: rgb(247, 192, 120);
+    background-color: rgb(78, 152, 248);
+    border-radius: 5px;
+    width: 1200px;
+    margin: 0 auto;
+    height: 300px;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(83, 103, 219);
+    padding: 16px;
+    border-radius: 5px;
+    width: 1000px;
+    margin: 16px auto;
+}
+.boton{
+    background-color: rgb(218, 21, 31);
+    border: 3px solid lightblue;
+    color: white;
+    padding: 8px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.form{
+    background-color: rgb(122, 219, 83);
+    color: rgb(159, 40, 214);
+    padding: 3px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+}
+.leg{
+    background-color: rgb(83, 103, 219);
+    color: pink;
+    padding: 2px 8px;
+    border-radius: 5px;
+}
+.footer{
+    background-color: rgb(83, 103, 219);
+    color: white;
+    text-align: center;
+    padding: 5px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
