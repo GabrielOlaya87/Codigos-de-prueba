@@ -360,7 +360,10 @@ ncluye información de acceso, como el protocolo y, para recursos web, el nombre
 - dos puntos: señalan el directorio padre.
 - Ruta relativa al directorio padre: "../src/nav.html"
 - Los links tienen 5 tipos diferentes para estar.
-- :link: Representa un enlace que el usuario no ha visitado. Proporciona los estilos base para todos los enlaces de tu página. Los demás estados se construyen sobre él.
+```html
+:link
+```
+Representa un enlace que el usuario no ha visitado. Proporciona los estilos base para todos los enlaces de tu página. Los demás estados se construyen sobre él.
 - :visited: se aplica cuando un usuario ya ha visitado la página a la que se enlaza. Por defecto, esto convierte el enlace en púrpura, pero puedes usar CSS para proporcionar una indicación visual diferente al usuario.
 - :hover: Se aplica cuando un usuario está pasando el cursor sobre un enlace. Es útil para proporcionar atención extra a un enlace, para asegurar que un usuario realmente tiene la intención de hacer clic en él.
 - :focus: Se aplica a enlaces que están siendo activados por el usuario. Esto típicamente significa hacer clic en el enlace con el botón principal del mouse haciendo clic izquierdo, en la mayoría de los casos. Este estado puede ser útil para mostrar a un usuario que el elemento en el que hicieron clic es interactivo.
