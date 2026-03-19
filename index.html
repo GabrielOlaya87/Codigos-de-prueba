@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Códigos de prueba</title>
-    <link href="Assets/CSS/index.css" rel="stylesheet" type="text/css"/>
-    <link rel="icon" type="image/png" href="Assets/images/minecraft_logo.png" />
+    <link href="assets/css/index.css" rel="stylesheet" type="text/css"/>
+    <link rel="icon" type="image/png" href="assets/images/minecraft_logo.png" />
 </head>
 <body>
-    <div class="links">
+    <nav class="links">
         <h1>Proyectos</h1>
-        <ul>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">
+            <img src="assets/images/menu.png" alt="Menu">
+        </label>
+        <ul class="menu">
             <li><p><a href="Pages/perfil.html" target="_blank">HV</a></p></li>
             <li><p><a href="Pages/build-a-book-catalog-table.html" target="_blank">Libros</a></p></li>
             <li><p><a href="Pages/build-a-video-compilation-page.html" target="_blank">Videos y audios</a></p></li>
@@ -18,7 +22,7 @@
             <li><p><a href="Pages/form.html" target="_blank">Formularios</a></p></li>
             <li><p><a href="Pages/tabla.html" target="_blank">Tablas</a></p></li>
         </ul>
-    </div>
+    </nav>
     <section class="formulario">
         <form method="POST" action="https://formspree.io/f/mjgalrnb">
             <fieldset class="form">
@@ -36,6 +40,15 @@
             <fieldset class="form">
                 <legend class="leg">¿Qué te gustaría ver?</legend>
                 <textarea name="sugerencias" id="sugerencias" cols="30" rows="1" placeholder="Dime acá"></textarea>
+            </fieldset>
+            <fieldset class="form">
+                <legend class="leg">¿Que te gustó más?</legend>
+                <label for="pro">Proyectos</label>
+                <input id="pro" type="checkbox" name="elección" value="Proyectos" />
+                <label for="Form">Formulario</label>
+                <input id="Form" type="checkbox" name="elección" value="Formulario" />
+                <label for="Todo">Todo</label>
+                <input id="Todo" type="checkbox" name="elección" value="Todo" />
             </fieldset>
             <button type="submit" class="boton">Subir</button>
         </form>
