@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Códigos de prueba</title>
-    <link href="index.css" rel="stylesheet" type="text/css"/>
-    <link rel="icon" type="image/png" href="minecraft_logo.png" />
+    <link href="Assets/CSS/index.css" rel="stylesheet" type="text/css"/>
+    <link rel="icon" type="image/png" href="Assets/images/minecraft_logo.png" />
 </head>
 <body>
     <div class="links">
         <h1>Proyectos</h1>
         <ul>
-            <li><p><a href="perfil.html" target="_blank">HV</a></p></li>
-            <li><p><a href="build-a-book-catalog-table.html" target="_blank">Libros</a></p></li>
-            <li><p><a href="build-a-video-compilation-page.html" target="_blank">Videos y audios</a></p></li>
-            <li><p><a href="lab-event-hub.html" target="_blank">Eventos</a></p></li>
-            <li><p><a href="form.html" target="_blank">Formularios</a></p></li>
-            <li><p><a href="tabla.html" target="_blank">Tablas</a></p></li>
+            <li><p><a href="Pages/perfil.html" target="_blank">HV</a></p></li>
+            <li><p><a href="Pages/build-a-book-catalog-table.html" target="_blank">Libros</a></p></li>
+            <li><p><a href="Pages/build-a-video-compilation-page.html" target="_blank">Videos y audios</a></p></li>
+            <li><p><a href="Pages/lab-event-hub.html" target="_blank">Eventos</a></p></li>
+            <li><p><a href="Pages/form.html" target="_blank">Formularios</a></p></li>
+            <li><p><a href="Pages/tabla.html" target="_blank">Tablas</a></p></li>
         </ul>
     </div>
     <section class="formulario">
-        <form method="get" action="https://gabrielolaya87.github.io/Codigos-de-prueba/">
+        <form method="POST" action="https://formspree.io/f/mjgalrnb">
             <fieldset class="form">
                 <legend class="leg">Visitas</legend>
                 <label for="full-name">Nombre:</label>
@@ -32,6 +32,10 @@
                 <input id="Bien" type="radio" name="Opinión" value="Bien" />
                 <label for="Mal">Mal</label>
                 <input id="Mal" type="radio" name="Opinión" value="Mal" />
+            </fieldset>
+            <fieldset class="form">
+                <legend class="leg">¿Qué te gustaría ver?</legend>
+                <textarea name="sugerencias" id="sugerencias" cols="30" rows="1" placeholder="Dime acá"></textarea>
             </fieldset>
             <button type="submit" class="boton">Subir</button>
         </form>
