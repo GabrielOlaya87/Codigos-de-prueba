@@ -27,6 +27,7 @@ and a closing tag
 <a href="https://www.freecodecamp.org" target="_blank">Visit freeCodeCamp</a>
 ```
 - target="_blank": sirve para abrir el enlace en otra pestaña.
+---
 - checked: 
 ```html
 <input type="checkbox" checked />
@@ -63,7 +64,8 @@ acelera tiempos de carga de recursos externos.
 ```
 - favicon: es la abreviatura de favorite icon, es un icono pequeño que se ve en a pestaña del navegador junto al título del sitio, muchos sitios lo usan para mostrar el icono de su marca.
 ---
-- boilerplate: es una plantilla lista para la pagina web, incluye la estructura esencial del HTML.
+### boilerplate: 
+- es una plantilla lista para la pagina web, incluye la estructura esencial del HTML.
 DOCTYPE: le dice a los navegadores que versión de HTML se esta utilizando.
 
 ```html
@@ -141,7 +143,8 @@ puede haber texto para complementar el texto del link, además puede ir dentro d
 - En contraste con el atributo id, el valor del atributo class no necesita ser único y puede contener espacios.
 - ¿cuándo debes usar un id en lugar de una clase? Las clases son mejores para usar cuando quieres aplicar un conjunto de estilos a muchos elementos. Si quieres un elemento específico, es mejor usar un id porque esos valores deben ser únicos.
 ---
-- entidad html: es un conjunto de caracteres utilizados para representar un carácter reservado en HTML, como < y &.
+### entidad html: 
+- es un conjunto de caracteres utilizados para representar un carácter reservado en HTML, como < y &.
 
 - Referencias de carácter nombradas:
 ```html
@@ -193,7 +196,8 @@ puede haber texto para complementar el texto del link, además puede ir dentro d
 - description: se asegura que los navegadores, motores de búsqueda y otras herramientas web interpreten correctamente este metadato.
 - content: es donde colocarás tu descripción
 ---
-- Opne graph: permite controlar cómo aparece el contenido de su sitio web en varias plataformas de redes sociales. Puede atraer usuarios a querer hacer clic e interactuar con su contenido. Puede establecer estas propiedades a través de una colección de elementos meta dentro de su sección head en HTML.
+### Opne graph: 
+- permite controlar cómo aparece el contenido de su sitio web en varias plataformas de redes sociales. Puede atraer usuarios a querer hacer clic e interactuar con su contenido. Puede establecer estas propiedades a través de una colección de elementos meta dentro de su sección head en HTML.
 
 La primera propiedad de OG importante para incluir sería el title. Aquí hay un ejemplo de cómo establecer el OG titltle:
 ```html
@@ -216,6 +220,8 @@ La primera propiedad de OG importante para incluir sería el title. Aquí hay un
 <meta property="og:url" content="https://www.freecodecamp.org" />
 ```
 - Hay más propiedades de OG que puede establecer, como description, audio, video y locale. Sin embargo, el Open Graph url, image, type y title son las más importantes para incluir.
+---
+### audio y video:
 - audio: soporta formatos de audio populares como mp3, wav y ogg.
 - video: soporta formatos mp4, ogg y webm.
 ```html
@@ -261,7 +267,8 @@ La primera propiedad de OG importante para incluir sería el title. Aquí hay un
 </video>
 ```
 ---
-- Formas de optimizar: Usar WEBP o AVIF en vez de PNG o JPG.
+### Formas de optimizar: 
+- Usar WEBP o AVIF en vez de PNG o JPG.
 - propiedad intelectual: Estan protegidas por derechos de autor. 
 - No puedes usarlas a menos que hagas esto: obtener permiso por escrito del titular de los derechos de autor, comprar una licencia del titular de los derechos de autor, o incorporar la imagen de manera que se clasifique como uso legítimo.
 Ese tercer punto es complicado. El uso legítimo requiere que tu uso de la imagen sea tanto limitado como transformador. Algunos ejemplos de uso legítimo serían comentar o revisar el arte o crear una parodia de la imagen.
@@ -269,6 +276,7 @@ Ese tercer punto es complicado. El uso legítimo requiere que tu uso de la image
 - Finalmente, algunas imágenes pueden estar liberadas al dominio público. No tiene derechos de autor y es libre de ser usada sin restricciones. Las imágenes específicamente licenciadas bajo la licencia Creative Commons 0 se consideran de dominio público.
 - La mayoría de los motores de búsqueda te permitirán filtrar los resultados de imágenes por licencia. También existen sitios como Pixabay y Unsplash, que ofrecen imágenes de libre uso. Siempre ten en cuenta los derechos de autor y la licencia cuando uses una imagen en tu sitio web.
 ---
+### imágenes y SVG:
 - PNG Y JPG: formatos de imagen rasterizados, osea, se basan en píxeles, con los datos rastreando el valor de color en cada píxel.
 - SVG: gráfico vectorial escalable, rastrea datos basados en trazos y ecuaciones para trazar puntos, líneas y curvas. Se puede escalar a cualquier tamaño sin afectar la calidad, almacena datos en XML, es programable en HTML.
 ```html
@@ -283,7 +291,7 @@ Ese tercer punto es complicado. El uso legítimo requiere que tu uso de la image
 - circle: crea cara y ojos.
 - path: dibuja la sonrisa, crea una linea curva.
 - Font awesome: tiene muchos íconos de este estilo.
-- viewbox: ontrola qué parte de la imagen es visible dentro del SVG.
+- viewbox: Controla qué parte de la imagen es visible dentro del SVG.
 ```html
 <svg viewBox="0 0 50 50">
 </svg>
@@ -291,7 +299,8 @@ Ese tercer punto es complicado. El uso legítimo requiere que tu uso de la image
 - Los dos primeros números (0 0) establecen la posición inicial del viewBox: la esquina superior izquierda (x e y).
 Los siguientes dos números (50 50) definen el ancho y alto del viewBox.
 ---
-- elemento reemplazado: Su contenido es determinado por un recurso externo en lugar de por el CSS mismo, puede controlar la posición o el diseño de un elemento. Pero su CSS no puede modificar directamente el contenido de ese elemento.
+### elementos reemplazados: 
+- Su contenido es determinado por un recurso externo en lugar de por el CSS mismo, puede controlar la posición o el diseño de un elemento. Pero su CSS no puede modificar directamente el contenido de ese elemento.
 - Incluyen los elementos de imagen, iframe y video.
 - iframe: embeds an external site on your web page, youtube, mapas:
 ```html
@@ -354,7 +363,8 @@ ncluye información de acceso, como el protocolo y, para recursos web, el nombre
 - rutas relativas: especifica la ubicación de un archivo en relación con el directorio del archivo actual. No incluye el protocolo ni el nombre de dominio, haciéndolo más corto y más flexible para enlaces internos dentro del mismo sitio web. "./script.js"
 - Camino: es una cadena que especifica la ubicación de un archivo o directorio en un sistema de archivos. 
 ---
-- rutas de archivos: /public/logo.png, ./script.js, o ../styles.css.
+### rutas de archivos: 
+- /public/logo.png, ./script.js, o ../styles.css.
 - barra: puede ser una barra invertida (\) o una barra diagonal (/) dependiendo de tu sistema operativo, "separador de rutas".
 - punto: señala el directorio actual.
 - dos puntos: señalan el directorio padre.
@@ -409,7 +419,7 @@ a:active {
 - big: Otro elemento obsoleto de HTML presentacional que hace que el texto incluido sea un nivel más grande que el texto circundante.
 - El HTML semántico es ahora la práctica recomendada. Describe el contenido de los elementos, por lo que es mucho más fácil de leer, entender y mantener.
 ---
-- Elementos HTML semánticos: 
+### Elementos HTML semánticos: 
 - main: se usa para contener el contenido principal de la página web
 - header: para definir el encabezado del documento o sección.
 - sección de navegación, nav: para secciones con enlaces de navegación.
@@ -458,13 +468,14 @@ a:active {
 - q: pone comillas a la cita que deseas. Se usa para distinguir el texto citado del contenido circundante.
 - ¿Cuál es la diferencia entre citas en bloque y en línea? Debes usar citas en bloque para citas extensas de otras fuentes y citas en línea para citas breves de otras fuentes que deberían formar parte de párrafos existentes.
 ---
-- aberviaturas en html: acrónimos e inicialismos.
+### aberviaturas en html: 
+- acrónimos e inicialismos.
 - abbr: para marcar aberviaturas.
 ```html
 <p><abbr title="HyperText Markup Language">HTML</abbr> is the foundation of the web.</p>
 ```
 ---
-- direcciones html: es como un section o div, pero de contacto.
+### direcciones html: es como un section o div, pero de contacto.
 ```html
 <address>
   <h2>Company Name</h2>
@@ -482,7 +493,7 @@ a:active {
 - mailto se usan en documentos HTML para permitir que los usuarios abran un nuevo correo electrónico en su cliente de correo preferido.
 - Uno de los inconvenientes de usar un enlace mailto es que los usuarios a menudo lo perciben como spam. Desafortunadamente, muchos spammers usarán esta opción para enviar correos electrónicos a los usuarios. Así tener en cuenta eso cuando se use.
 ---
-- horas y fechas:
+### horas y fechas:
 ```html
 <p>The reservations are for <time datetime="20:00">20:00 </time></p>
 ```
@@ -496,7 +507,7 @@ a:active {
 - La primera parte de ese valor es el año, mes y día. La T mayúscula es un separador entre la fecha y la hora.
 - ISO 8601: es un estándar internacional para representar fechas y horas.
 ---
-- ecuaciones matemáticas y fórmulas químicas: 
+### ecuaciones matemáticas y fórmulas químicas: 
 - superíndice: es un símbolo o letra impresa por encima de la línea normal de texto.
 ```html
 <p>2<sup>2</sup> (2 squared) is 4.</p>
@@ -506,7 +517,7 @@ a:active {
 - sub: para ilustrar que el carácter debe ser un subíndice, muestra una línea de base más baja usando texto más pequeño.
 - casos de uso comunes para el elemento subíndice incluyen fórmulas químicas, notas al pie y subíndices de variables.
 ---
-- representación de código de computadora en html: 
+### representación de código de computadora en html: 
 ```html
 <p>
   To set the text color to blue in CSS, use the following code:
@@ -526,7 +537,7 @@ a:active {
 ```
 - pre: (texto preformateado) tener cuidado con espacios porque se mostrará exactamente como está escrito dentro del documento HTML, para fragmentos de código más largos.
 ---
-- U, S y Ruby:
+### U, S y Ruby:
 - elemento de anotación no articulada, u: Sólo debe utilizarse para indicar que se ha aplicado una anotación no textual al texto.
 ```html
 <p>
@@ -548,7 +559,8 @@ a:active {
 - rt: elemento de texto ruby, se utiliza para indicar texto para la anotación ruby. Este texto suele usarse para detalles de pronunciación o traducción en la tipografía del este asiático.
 - Aunque el elemento ruby puede usarse para otros tipos de anotaciones, el caso de uso más común es para la tipografía del este asiático.
 ---
-- nav: se utiliza para proporcionar enlaces de navegación a otras secciones en el documento u otras secciones en el sitio web. Muchas veces verás el elemento nav utilizado para menús o tablas de contenido.
+#### nav: 
+- se utiliza para proporcionar enlaces de navegación a otras secciones en el documento u otras secciones en el sitio web. Muchas veces verás el elemento nav utilizado para menús o tablas de contenido.
 ```html
 <nav>
   <ul>
@@ -639,7 +651,7 @@ document.addEventListener("DOMContentLoaded", () => {
 - input: elementos vacios, no pueden tener nodos hijos, como texto, y solo puede tener una etiqueta de inicio.
 - button: ofrece más flexibilidad porque puedes anidar texto, imágenes e íconos dentro de él.
 ---
-- ¿Qué es la validación de formularios del lado del cliente en formularios HTML, y cuáles son algunos ejemplos?:
+### ¿Qué es la validación de formularios del lado del cliente en formularios HTML, y cuáles son algunos ejemplos?:
 - lado del cliente: se refiere a todo lo que ocurre en el servidor, la computadora, o sistema que aloja el sitio web o aplicación. Esto incluye el procesamiento de datos, la ejecución de aplicaciones y la gestión de requests que provienen del dispositivo del usuario.
 - required: especifica que el usuario necesita completar esa parte del formulario antes de que se envíe.
 ```html
@@ -652,7 +664,7 @@ document.addEventListener("DOMContentLoaded", () => {
 - Otra ventaja de usar el input de correo electrónico es que los inputs de correo tienen una validación básica para asegurar que las direcciones de email estén correctamente formateadas. Por ejemplo, si escribes palabras al azar y haces clic en enviar, el navegador mostrará una alerta indicando que falta un signo @.
 - minlength y maxlength: se utilizan para establecer la longitud mínima y máxima en caracteres para la entrada de correo electrónico. Si no incluyes la longitud mínima o superas la longitud máxima de caracteres, el navegador mostrará un mensaje de alerta.
 ---
-- estados del form: 
+### estados del form: 
 - por defecto: en una entrada de dirección de correo electrónico es un campo en blanco.
 - enfocado: Cuando el usuario hace clic en un control de formulario o lo selecciona con la tecla Tabulador del teclado. Cuando una entrada está en este estado, la mayoría de los navegadores mostrarán un borde azul resaltado alrededor de la entrada. Pero puedes optar por añadir estilos adicionales en CSS.
 - desactivado: Este estado muestra a los usuarios que un campo de entrada no se puede enfocar ni activar.
@@ -695,7 +707,7 @@ document.addEventListener("DOMContentLoaded", () => {
 - rows: se usa para especificar la altura visible del textarea.
 - cols: se usa para especificar el ancho visible del textarea
 ---
-- tablas html:
+### tablas html:
 ```html
 <table id="quickfacts">
   <thead>
@@ -757,7 +769,8 @@ Ceguera, Baja visión, Daltonismo, Sordera, Dificultad para usar teclados, raton
 U-  representa Comprensible. Los usuarios deben poder entender la información. Por ejemplo, puedes evitar oraciones complejas y usar un lenguaje simple tanto como sea posible.
 - R representa Robusto. Una amplia gama de navegadores y otras herramientas, incluidas las tecnologías asistivas, deben poder interpretar el contenido.
 ---
-- lectores de pantalla:  son herramientas tecnológicas de asistencia que ayudan a las personas ciegas y con discapacidad visual a utilizar ordenadores y dispositivos móviles. Aparte del texto a voz y la salida en braille, otras características notables de los lectores de pantalla son las ayudas de navegación y asistencia de navegación web.
+### lectores de pantalla: 
+- son herramientas tecnológicas de asistencia que ayudan a las personas ciegas y con discapacidad visual a utilizar ordenadores y dispositivos móviles. Aparte del texto a voz y la salida en braille, otras características notables de los lectores de pantalla son las ayudas de navegación y asistencia de navegación web.
 - Los ordenadores con Windows tienen Narrador incorporado. Puedes activarlo presionando WIN + CTRL + ENTER. NonVisual Desktop Access (NVDA) y Job Access With Speech (JAWS) también están disponibles para ordenadores con Windows. NVDA es gratuito y de código abierto, mientras que JAWS es de pago.
 - Los teléfonos Android tienen TalkBack incorporado. Puedes activarlo accediendo a Settings > Special Function > Accessibility > Talkback.
 - texto braille y gran impresion: Están diseñados para usuarios con discapacidades visuales. En los teclados de texto grande, también llamados teclados de gran impresión, son más grandes en comparación con los teclados estándar. Este diseño es útil para personas que pueden encontrar difícil ver el texto pequeño en las teclas. La mayoría de ellos también tienen un contraste y brillo mejorados.
@@ -875,7 +888,8 @@ Los dos encabezados de fila (Nora y Gino) tienen un scope de row.
 - ¿Por qué es importante que los elementos de entrada tengan una etiqueta asociada?: Las etiquetas ayudan a las personas con discapacidades, hacen los formularios más amigables para todos y, en última instancia, mejoran las tasas de conversión de formularios.
 - Los lectores de pantalla a menudo dependen de las etiquetas para describir el propósito de los campos de entrada. Para que esto funcione correctamente, la etiqueta debe estar asociada programáticamente con el input. Aunque hay varias formas de hacer eso, la más común es usar el elemento HTML label.
 ---
-- propósito de WAI-ARIA y cómo funciona: Hacer accesible el contenido estático puede ser relativamente sencillo, pero el contenido dinámico puede ser más desafiante. Para esto entra en juego WAI-ARIA.
+### propósito de WAI-ARIA y cómo funciona: 
+- Hacer accesible el contenido estático puede ser relativamente sencillo, pero el contenido dinámico puede ser más desafiante. Para esto entra en juego WAI-ARIA.
 - WAI-ARIA: significa Iniciativa de Accesibilidad Web - Aplicaciones de Internet Ricas Accesibles. Es una especificación que mejora la accesibilidad para contenido dinámico y componentes de interfaz de usuario (UI).
 - WCAG y WAI-ARIA no son lo mismo. WCAG proporciona pautas generales para la accesibilidad web, mientras que WAI-ARIA ofrece reglas específicas para hacer que el contenido dinámico e interactivo sea accesible para los usuarios de tecnologías de asistencia. Por lo tanto, el propósito principal de WAI-ARIA es mejorar la accesibilidad para contenido dinámico y componentes de UI que no tienen equivalentes nativos en HTML.
 - funciona introduciendo un conjunto de atributos que puede añadir a elementos HTML para proporcionar información semántica adicional. Estos atributos se categorizan en roles, estados y propiedades.
@@ -892,7 +906,7 @@ Los dos encabezados de fila (Nora y Gino) tienen un scope de row.
 - Esto hará que los elementos sean comprensibles y navegables para los usuarios de tecnologías de asistencia.
 - Utilice WAI-ARIA solo cuando HTML se quede corto, y no olvide probar con tecnologías de asistencia como lectores de pantalla, o haga que personas con discapacidades prueben su trabajo. Además, asegúrese de que sus estados y propiedades WAI-ARIA actualicen con el contenido en tiempo real.
 ---
-- ARIA stands for Accessible Rich Internet Applications.
+### ARIA stands for Accessible Rich Internet Applications.
 - roles ARIA: especifican el significado semántico de los elementos HTML. Son esenciales para hacer el contenido web accesible a personas que usan tecnologías de asistencia, como lectores de pantalla.
 - HTML tiene elementos semánticos y no semánticos, basados en si transmiten significado sobre su contenido.
 - Muchos elementos HTML semánticos ya tienen un rol ARIA asignado por defecto. Por ejemplo, el elemento button tiene un rol ARIA predeterminado de button.
@@ -909,7 +923,8 @@ Los dos encabezados de fila (Nora y Gino) tienen un scope de row.
   x<sup>2</sup> + y<sup>2</sup> = 3
 </div>
 ```
-- Roles de widget: definen el propósito y funcionalidad de los elementos interactivos, como las barras de desplazamiento. Ejemplos de roles de widget incluyen scrollbar, searchbox, separator (cuando es enfocable), slider, spinbutton, switch, tab, tabpanel, y treeitem. Algunos de estos roles tienen elementos semánticos equivalentes. Debe priorizar el elemento semántico sobre el rol si existe uno. Por ejemplo, debes preferir usar el elemento HTML button en lugar de agregar un role de button a un div.
+#### Roles de widget: 
+- definen el propósito y funcionalidad de los elementos interactivos, como las barras de desplazamiento. Ejemplos de roles de widget incluyen scrollbar, searchbox, separator (cuando es enfocable), slider, spinbutton, switch, tab, tabpanel, y treeitem. Algunos de estos roles tienen elementos semánticos equivalentes. Debe priorizar el elemento semántico sobre el rol si existe uno. Por ejemplo, debes preferir usar el elemento HTML button en lugar de agregar un role de button a un div.
 ```html
 <link rel="stylesheet" href="styles.css">
 
@@ -923,7 +938,8 @@ Los dos encabezados de fila (Nora y Gino) tienen un scope de row.
   <button type="button" aria-label="Submit search">Search</button>
 </div>
 ```
-- Roles de punto de referencia: Los roles de punto de referencia clasifican y etiquetan las secciones principales de una página web. Los lectores de pantalla los utilizan para proporcionar una navegación conveniente a secciones importantes de una página. Debe usarlos con moderación para mantener el diseño general simple y fácil de entender. Ejemplos de roles de punto de referencia son banner, complementary, contentinfo, form, main, navigation, region, y search. Cada uno de estos roles tiene un equivalente en HTML, como header, footer, aside, form, main, nav, section, y search. Si utiliza los elementos HTML adecuados para definir las secciones de su página, entonces no es necesario añadir explícitamente el atributo role a estos elementos.
+#### Roles de punto de referencia: 
+- Los roles de punto de referencia clasifican y etiquetan las secciones principales de una página web. Los lectores de pantalla los utilizan para proporcionar una navegación conveniente a secciones importantes de una página. Debe usarlos con moderación para mantener el diseño general simple y fácil de entender. Ejemplos de roles de punto de referencia son banner, complementary, contentinfo, form, main, navigation, region, y search. Cada uno de estos roles tiene un equivalente en HTML, como header, footer, aside, form, main, nav, section, y search. Si utiliza los elementos HTML adecuados para definir las secciones de su página, entonces no es necesario añadir explícitamente el atributo role a estos elementos.
 ```html
 <link rel="stylesheet" href="styles.css">
 
@@ -970,7 +986,8 @@ Los dos encabezados de fila (Nora y Gino) tienen un scope de row.
   text-decoration: underline;
 }
 ```
-- Roles de región activa: definen elementos con contenido que cambiará dinámicamente. De esta manera, los lectores de pantalla y otras tecnologías de asistencia pueden anunciar cambios a usuarios con discapacidades visuales. Estos roles incluyen: alert, log, marquee, status, y timer.
+#### Roles de región activa: 
+- definen elementos con contenido que cambiará dinámicamente. De esta manera, los lectores de pantalla y otras tecnologías de asistencia pueden anunciar cambios a usuarios con discapacidades visuales. Estos roles incluyen: alert, log, marquee, status, y timer.
 ```html
 <link rel="stylesheet" href="styles.css">
 
@@ -1018,7 +1035,8 @@ button.addEventListener("click", () => {
   statusMessage.textContent = "Your upload has completed successfully.";
 });
 ```
-- Roles de ventana: definen sub-ventanas, como cuadros de diálogo modales emergentes. Estos roles incluyen alertdialog y dialog. Tenga en cuenta que ahora se considera una buena práctica utilizar el elemento HTML dialog y sus métodos JavaScript asociados en lugar de crear un diálogo manualmente.
+#### Roles de ventana: 
+- definen sub-ventanas, como cuadros de diálogo modales emergentes. Estos roles incluyen alertdialog y dialog. Tenga en cuenta que ahora se considera una buena práctica utilizar el elemento HTML dialog y sus métodos JavaScript asociados en lugar de crear un diálogo manualmente.
 ```html
 <link rel="stylesheet" href="styles.css">
 
@@ -1065,7 +1083,8 @@ button.addEventListener("click", () => {
   text-decoration: underline;
 }
 ```
-- Roles de región activa: definen elementos con contenido que cambiará dinámicamente. De esta manera, los lectores de pantalla y otras tecnologías de asistencia pueden anunciar cambios a usuarios con discapacidades visuales. Estos roles incluyen: alert, log, marquee, status, y timer.
+#### Roles de región activa: 
+- definen elementos con contenido que cambiará dinámicamente. De esta manera, los lectores de pantalla y otras tecnologías de asistencia pueden anunciar cambios a usuarios con discapacidades visuales. Estos roles incluyen: alert, log, marquee, status, y timer.
 ```html
 <link rel="stylesheet" href="styles.css">
 
@@ -1152,7 +1171,8 @@ confirmBtn.addEventListener("click", () => {
   dialog.style.display = "none";
 });
 ```
-- Roles abstractos: Estos roles ayudan a organizar el documento. Solo están destinados a ser utilizados internamente por el navegador, no por los desarrolladores, por lo que debe saber que existen, pero no debe usarlos en sus sitios web o aplicaciones web.
+#### Roles abstractos: 
+- Estos roles ayudan a organizar el documento. Solo están destinados a ser utilizados internamente por el navegador, no por los desarrolladores, por lo que debe saber que existen, pero no debe usarlos en sus sitios web o aplicaciones web.
 - Con roles ARIA, puede crear sitios web y aplicaciones web accesibles e inclusivos. Proporcionan información semántica sobre el propósito y la función de los elementos HTML.
 - Los lectores de pantalla y otras tecnologías de asistencia utilizan esta información para ayudar a los usuarios a comprender el contenido de su página y establecer expectativas sobre cómo usarlo.
 ---
@@ -1185,7 +1205,8 @@ confirmBtn.addEventListener("click", () => {
 - aria-labelledby puede facilitar mucho la creación programática de etiquetas invisibles complejas que consisten en múltiples fuentes de texto.
 - Una última nota, no uses aria-label y aria-labelledby en un elemento al mismo tiempo. En este caso, la etiqueta invisible para los lectores de pantalla siempre será determinada por aria-labelledby y aria-label será completamente ignorada.
 ---
-- aria-hidden y cómo funciona: Si alguna vez necesita mostrar contenido mientras lo oculta al mismo tiempo de personas que usan tecnología asistiva, como lectores de pantalla, puede usar el atributo aria-hidden. Solo necesita agregarlo al elemento HTML que desea ocultar y establecer su valor en true, como puede ver aquí: aria-hidden="true". Este atributo oculta el elemento y todos sus hijos del árbol de accesibilidad, manteniéndolos visibles en la página. Los casos de uso comunes incluyen: Iconos e imágenes que solo tienen un propósito decorativo. Contenido duplicado.
+### aria-hidden y cómo funciona: 
+- Si alguna vez necesita mostrar contenido mientras lo oculta al mismo tiempo de personas que usan tecnología asistiva, como lectores de pantalla, puede usar el atributo aria-hidden. Solo necesita agregarlo al elemento HTML que desea ocultar y establecer su valor en true, como puede ver aquí: aria-hidden="true". Este atributo oculta el elemento y todos sus hijos del árbol de accesibilidad, manteniéndolos visibles en la página. Los casos de uso comunes incluyen: Iconos e imágenes que solo tienen un propósito decorativo. Contenido duplicado.
 - solo oculta contenido de la tecnología asistiva, como los lectores de pantalla. Si el contenido debe estar oculto para todos, entonces no debe usar aria-hidden para ocultarlo. Por ejemplo, un menú hamburguesa que esté actualmente colapsado debe ocultarse para todos los usuarios de teclado, no solo para los usuarios de lectores de pantalla. En este caso, podría establecer la propiedad CSS display en none en el menú para eliminarlo del DOM cuando esté colapsado.
 - No debe usar aria-hidden para ocultar un elemento que es enfocable con el teclado. El atributo aria-hidden solo elimina el elemento del árbol de accesibilidad. No lo elimina del DOM. Por lo tanto, todavía será posible que los usuarios de lectores de pantalla tabulen al elemento, pero su lector de pantalla no anunciará el elemento, provocando efectivamente que se centren en "nada".
 ```html
@@ -1248,7 +1269,8 @@ passwordEl.addEventListener("input", (e) => {
 - Ahora que sabe qué hace un buen y mal alt texto, veamos algunas de las mejores prácticas. Debe intentar mantener el alt texto corto. Debería ser lo suficientemente detallado para entender la imagen, pero no tan largo que se vuelva confuso. No debería intentar describir cada pequeño detalle. Céntrese en los aspectos más importantes de la imagen. Generalmente, no necesitas comenzar con "imagen de" o "foto de." Puedes empezar la descripción directamente. Además, si hay texto similar alrededor de la imagen, no necesita escribirlo nuevamente. Generalmente se recomienda terminar el texto alt con un punto para consistencia. Si la imagen es un enlace a otra página, en lugar de describir la imagen en sí, el alt texto debería describir qué ocurrirá si los usuarios hacen clic en ella.
 - Cada imagen en su sitio web debería tener un atributo alt, incluso si está vacío. Si omite el atributo alt por completo, algunos lectores de pantalla leerán el nombre del archivo en su lugar, lo cual puede distraer a las personas que usan tecnologías de asistencia, por lo que no se recomienda.
 ---
-¿Cuáles son los beneficios de accesibilidad de un texto de enlace adecuado y cuáles son algunos ejemplos de textos de enlace adecuados?: El primer beneficio visible de un buen texto de enlace es que facilita que todos encuentren la información rápidamente. Los enlaces descriptivos ayudan a los usuarios a saber hacia dónde se dirigen y qué accederán. Esto asegura que el usuario no se sienta perdido y mejora la experiencia de usuario en general. Para aquellos que utilizan lectores de pantalla, un texto de enlace claro y descriptivo es un imperativo. Los lectores de pantalla leen el texto del enlace en voz alta, por lo que un texto como "Lea nuestra guía de accesibilidad" es mucho mejor que "Haga clic aquí."
+#### ¿Cuáles son los beneficios de accesibilidad de un texto de enlace adecuado y cuáles son algunos ejemplos de textos de enlace adecuados?: 
+- El primer beneficio visible de un buen texto de enlace es que facilita que todos encuentren la información rápidamente. Los enlaces descriptivos ayudan a los usuarios a saber hacia dónde se dirigen y qué accederán. Esto asegura que el usuario no se sienta perdido y mejora la experiencia de usuario en general. Para aquellos que utilizan lectores de pantalla, un texto de enlace claro y descriptivo es un imperativo. Los lectores de pantalla leen el texto del enlace en voz alta, por lo que un texto como "Lea nuestra guía de accesibilidad" es mucho mejor que "Haga clic aquí."
 - buenas maneras de hacer que el contenido de audio y video sea accesible: lo primero que debe considerar es agregar subtítulos o leyendas a su contenido de video. Las leyendas proporcionan la versión de texto de las palabras habladas y los sonidos no verbales importantes, como música o risas, sincronizados con el video. 
 - Para agregar leyendas o subtítulos a su contenido de video o audio, puede usar el elemento track:
 ```html
@@ -1320,6 +1342,5 @@ button:focus {
 - La propiedad outline se usa para definir el contorno alrededor del elemento. Este ejemplo establece el contorno en una línea sólida azul con 2 píxeles de grosor.
 - debes evitar trampas de teclado, que ocurren cuando un usuario no puede mover el enfoque lejos de un cierto elemento en componentes como modales y ventanas emergentes.
 ---
-- article: Representa contenido autónomo.
 - aside: Usado para barras laterales o contenido relacionado.
 - input: se utiliza para crear un campo de entrada para la entrada del usuario.
