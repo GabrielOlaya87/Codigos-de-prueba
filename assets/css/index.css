@@ -29,58 +29,55 @@
     align-items: center;
     justify-content: center;
     background-color: rgb(78, 152, 248);
-    border-radius: 5px;
-    width: 1200px;
-    margin: 0 auto;
-    height: 300px;
-    margin-bottom: 65px;
+    border-radius: 40px;
+    width: 80%;
+    margin: 2% auto;
 }
 
 .formulario {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
     background-color: rgb(83, 103, 219);
-    padding: 16px;
-    border-radius: 5px;
-    width: 1000px;
-    margin: 16px auto;
+    padding: 1em;
+    border-radius: 35px;
+    width: 65%;
+    margin: 2% auto;
 }
 .boton{
     background-color: rgb(218, 21, 31);
     border: 3px solid lightblue;
     color: white;
-    padding: 8px 10px;
+    padding: 0.4em 0.9em;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 14px;
-    margin-top: 10px;
+    font-size: 95%;
+    margin-top: 1%;
     cursor: pointer;
 }
 .form{
     background-color: rgb(122, 219, 83);
-    color: rgb(159, 40, 214);
-    padding: 3px 10px;
+    padding: 0.3rem 0.2rem;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 14px;
-    border-radius: 5px;
+    font-size: 90%;
+    border-radius: 8px;
 }
 .leg{
-    background-color: rgb(83, 103, 219);
+    background-color: rgb(191 69 69);
     color: pink;
-    padding: 2px 8px;
-    border-radius: 5px;
+    padding: 1% 4%;
+    border-radius: 7px;
 }
 .footer{
     background-color: rgb(83, 103, 219);
     color: white;
     text-align: center;
-    padding: 5px;
+    padding: 1%;
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+.g-recaptcha {
+  float: inline-end;
 }
