@@ -1,31 +1,13 @@
-console.log("Hi there!");
-console.log("I am excited to talk to you.");
-let bot;
-bot = "teacherBot";
+const hola = "Hola Mundo";
+console.log(hola);
 
-let botLocation = "the universe";
+const nombre = "Gabriel";
+console.log(`El nombre de quién creó esta página es: ${nombre}.`);
 
-console.log("Allow me to introduce myself.");
+/*const comoEstas = window.prompt("¿Cómo estás?");
+console.log(`El usuario respondió: ${comoEstas}.`);*/
 
-const botIntroduction = "My name is " + bot + ".";
-console.log(botIntroduction);
-
-const botLocationSentence = "I live in " + botLocation + ".";
-console.log(botLocationSentence);
-
-bot = "professorBot";
-
-const nicknameIntroduction = "My nickname is " + bot + ".";
-console.log(nicknameIntroduction);
-
-bot = "awesomeTeacherBot";
-
-const newNicknameGreeting = "I love my nickname but I wish people would call me " + bot + ".";
-console.log(newNicknameGreeting);
-
-const favoriteSubject = "Computer Science";
-
-const favoriteSubjectSentence = "My favorite subject is " + favoriteSubject + ".";
-console.log(favoriteSubjectSentence);
-
-console.log("Well, it was nice to talk to you. Have a nice day!");
+const numero1 = 5;
+const numero2 = 10;
+const suma = numero1 + numero2;
+console.log(`La suma de ${numero1} y ${numero2} es: ${suma}.`);

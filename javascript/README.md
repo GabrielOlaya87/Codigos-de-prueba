@@ -1,6 +1,7 @@
 # Curso JavaScript
 - Acá tendré toda la información importante para repaso sobre JavaScript.
 ## Códigos javascript
+- strings: es una secuencia de caracteres envuelta en comillas simples, dobles o acentos graves. Las cadenas son tipos de datos primitivos y son inmutables. La inmutabilidad significa que una vez creada una cadena, no se puede cambiar.
 - Punto flotante: Un número de punto flotante es un número con punto decimal. Los ejemplos incluyen 3.14, 0.5 y 0.0001.
 - Symbol: Crea etiquetas o identificadores únicos:
 ```js
@@ -156,6 +157,7 @@ let statement = "She said, \"Hello!\"";
 console.log(statement); // She said, "Hello!"
 ```
 - La barra inclinada le dice a JavaScript que trate las comillas como caracteres literales, para que aparezcan correctamente en la salida. También puedes escapar otros caracteres especiales, como la barra inclinada en sí (\\), o comillas simples dentro de una cadena rodeada por comillas simples (\').
+---
 ## literales de plantilla y la interpolación de strings
 - los literales de plantilla son una forma poderosa y flexible de trabajar con cadenas. A diferencia de las cadenas normales, que usan comillas simples (') o dobles ("), los literales de plantilla se definen con comillas inversas (```). Facilitan la creación de cadenas que abarcan múltiples líneas o incluyen expresiones (como variables o incluso código JavaScript) directamente dentro de la cadena.
 - Permiten una manipulación de cadenas más sencilla, incluido el incrustar variables directamente dentro de una cadena, una característica conocida como interpolación de strings.
@@ -182,5 +184,153 @@ const output = `One of my favorite songs is "${song}". I rated it ${
   (score / highestScore) * 100
 }%.`;
 console.log(output); 
+```
+---
+### ¿Cómo puedes encontrar la posición de una subcadena en una cadena? (indexOf())
+- Una subcadena es una secuencia de caracteres que aparece dentro de una cadena más grande. Por ejemplo, en la cadena hola mundo, hola y mundo son subcadenas.
+- indexOf(): Permite buscar una subcadena dentro de una cadena. Devuelve el índice (o posición) de la primera ocurrencia de esa subcadena. Si la subcadena no se encuentra, devuelve -1, lo que indica que la búsqueda no tuvo éxito. Toma dos argumentos: el primero es la subcadena que deseas encontrar dentro de la cadena más grande, y el segundo es una posición de inicio opcional para la búsqueda. Si no proporcionas una posición de inicio, la búsqueda comenzará desde el inicio de la cadena.
+- un argumento es un valor que le das a una función o método cuando lo llamas, permitiendo que esa función o método realice su tarea usando la información específica que proporcionas. Aprenderás más sobre argumentos en lecciones futuras.
+- Aquí tienes un ejemplo de uso del método indexOf() para encontrar la posición de la cadena awesome:
+```js
+let sentence = "JavaScript is awesome!";
+let position = sentence.indexOf("awesome!");
+console.log(position); // 14
+```
+- En este ejemplo, la palabra awesome comienza en el índice 14 en la cadena JavaScript es awesome!, por lo que el método indexOf() devuelve 14, (cuenta espacios), es sensible a mayusculas y minusculas.
+---
+### prompt()
+- Es una de las formas más simples de obtener entrada de un usuario a través de una pequeña ventana de diálogo emergente.
+- A menudo se utiliza cuando la página web necesita una información del usuario, como un nombre u otra forma de entrada de texto. Abre un cuadro de diálogo que pide al usuario alguna entrada y luego devuelve el texto ingresado por el usuario como una cadena.
+- Toma dos argumentos: el primero es el mensaje que aparecerá dentro del cuadro de diálogo, generalmente pidiendo al usuario que ingrese información. Y el segundo es un valor predeterminado que es opcional y llenará el campo de entrada inicialmente.
+```html
+<button id="prompt-btn">Show Prompt</button>
+<p id="output"></p>
+<script src="index.js"></script>
+```
+```js
+//prompt(message, default);
+const btn = document.getElementById("prompt-btn");
+const output = document.getElementById("output");
+btn.addEventListener("click", () => {
+  const userName = prompt("What is your name?", "Guest");
+  output.textContent = "Hello, " + userName + "!";
+});
+```
+- si se canela el prompt saldra null.
+---
+### ¿Qué es ASCII y cómo funciona con `charCodeAt()` y `fromCharCode()`?:
+- abreviatura de American Standard Code for Information Interchange, es un estándar de codificación de caracteres utilizado en computadoras para representar texto. Asigna un valor numérico a cada carácter, lo cual es reconocido universalmente por las máquinas. Aunque las cadenas de JavaScript usan Unicode (UTF-16) internamente, los valores ASCII coinciden con los primeros 128 caracteres Unicode. 
+- ASCII: es un sistema para codificar caracteres como letras, dígitos y símbolos en valores numéricos. Cada carácter se asigna a un número específico. Por ejemplo, la letra mayúscula A está representada por el número 65 en ASCII, mientras que la minúscula a es representada por 97. Esta codificación permite a las computadoras almacenar y manipular texto. El estándar ASCII cubre 128 caracteres, incluyendo:
+- Letras inglesas mayúsculas y minúsculas (A-Z, a-z).
+- Números (0-9).
+- Signos de puntuación y símbolos comunes (!, @, #, y así sucesivamente).
+- Caracteres de control (como nueva línea y tabulación).
+- En JavaScript, puedes acceder al código numérico de un carácter usando el método charCodeAt(). Este método devuelve la unidad de código UTF-16 del carácter en un índice especificado. Para los primeros 128 caracteres, este valor coincide con el código ASCII.
+```js
+let letter = "A";
+console.log(letter.charCodeAt(0));  // 65
+
+let symbol = "!";
+console.log(symbol.charCodeAt(0));  // 33
+```
+- Mientras que charCodeAt() te ayuda a obtener el código numérico de un carácter, el método fromCharCode() te permite hacer lo contrario: convertir una unidad de código UTF-16 (que coincide con ASCII para caracteres básicos) en su carácter correspondiente.
+```js
+let char = String.fromCharCode(70);
+console.log(char);  //  A
+```
+- Estos métodos son particularmente útiles cuando necesitas manipular o comparar caracteres basándote en sus valores numéricos de código. Por ejemplo, podrías usar charCodeAt() para verificar si un carácter es mayúscula, minúscula o un dígito comparando su valor ASCII. Por otro lado, fromCharCode() puede ser utilizado para generar dinámicamente caracteres a partir de sus códigos ASCII.
+---
+### ¿Cómo puedes probar si una cadena contiene una subcadena?
+- Por ejemplo, podrías querer verificar si la entrada de un usuario incluye una palabra o carácter específico antes de realizar alguna acción. Una forma de lograrlo es utilizando el método includes().
+- includes(): se utiliza para verificar si una cadena contiene una subcadena específica. Si se encuentra la subcadena dentro de la cadena, el método devuelve true, de lo contrario, devuelve false. (sensible a mayusculas).
+```js
+let phrase = "JavaScript is awesome!";
+let result = phrase.includes("awesome");
+console.log(result);  // true
+```
+- para verificar una subcadena comenzando en un índice específico de la cadena proporcionando un segundo parámetro:
+```js
+let text = "Hello, JavaScript world!";
+let result = text.includes("JavaScript", 7);
+console.log(result);  // true
+```
+- solo devuelve un resultado de true o false. No proporciona información sobre dónde se encuentra la subcadena en la cadena ni cuántas veces ocurre. Si necesitas ese nivel de detalle, otros métodos, como el método indexOf() podrían ser más adecuados.
+---
+### ¿Cómo puedes extraer un subcadena de una cadena?
+- slice(): te permite extraer una porción de una cadena y devuelve una nueva cadena, sin modificar la cadena original. Toma dos parámetros: el índice de inicio y el índice de fin opcional.
+```js
+let message = "Hello, world!";
+let greeting = message.slice(0, 5);
+console.log(greeting);  // Hello
+```
+- En este ejemplo, slice(0, 5) extrae caracteres comenzando desde el índice 0 hasta pero sin incluir el índice 5. Como resultado, se extrae la palabra Hello.
+- Cuando usas un número negativo, se cuenta hacia atrás desde el final de la cadena.
+---
+### ¿Cómo puedes cambiar el caso de una cadena?
+- hay muchas situaciones en las que podrías necesitar ajustar el caso del texto, como transformar todas las letras a mayúsculas para un encabezado o convertir el texto a minúsculas para uniformidad.
+- toUpperCase(): Convierte todos los caracteres a letras mayúsculas y devuelve una nueva cadena con todos los caracteres en mayúsculas. Esto es útil cuando quieres enfatizar texto o crear consistencia en el formato de las cadenas.
+```js
+let greeting = "Hello, World!";
+let uppercaseGreeting = greeting.toUpperCase();
+console.log(uppercaseGreeting);  // "HELLO, WORLD!"
+```
+- toLowerCase() convierte todos los caracteres en una cadena a minúsculas. Esto es útil cuando necesitas estandarizar la entrada, como cuando comparas texto proporcionado por el usuario o haces verificaciones sin distinción de mayúsculas.
+```js
+let shout = "I AM LEARNING JAVASCRIPT!";
+let lowercaseShout = shout.toLowerCase();
+console.log(lowercaseShout);  // "i am learning javascript!"
+```
+- Estos métodos son particularmente útiles para estandarizar entradas de texto, realizar comparaciones sin distinguir entre mayúsculas y minúsculas, y asegurar la consistencia del diseño.
+---
+### ¿Cómo puedes eliminar los espacios en blanco de una cadena de texto?
+- es común encontrar espacios en blanco no deseados al principio o al final de una cadena. Los espacios en blanco pueden interferir con operaciones como comparación, almacenamiento o visualización, por lo que es importante saber cómo eliminarlos eficientemente.
+- trim(): Es la forma más común de eliminar espacios en blanco tanto del principio como del final de una cadena de texto.
+```js
+let message = "   Hello!   ";
+console.log(message); // "   Hello!   "
+let trimmedMessage = message.trim();
+console.log(trimmedMessage);  // "Hello!"
+```
+- trimStart(): elimina espacios en blanco del principio (o inicio) de la cadena.
+- trimEnd(): elimina espacios en blanco del final de la cadena.
+---
+### reemplazar partes de una cadena con otra:
+- podrías necesitar actualizar la información del usuario en una URL, cambiar el formato de las fechas o corregir errores en el contenido generado por el usuario.
+- replace(): Permite encontrar un valor especificado (como una palabra o carácter) en una cadena y reemplazarlo con otro valor. El método devuelve una nueva cadena con el reemplazo y deja la original sin cambios porque las cadenas en JavaScript son inmutables. Si el valor aparece varias veces en la cadena, solo se reemplazará la primera.
+- replaceAll(): lo mismo de arriba, pero cambia todos los valores en la cadena.
+- Esta es la sintáxis básica. (Es sensible a mayusculas):
+- searchValue es el valor que quieres buscar en la cadena. Puede ser una cadena o una expresión regular (regex), que describe patrones en el texto. Esto te permite buscar y manipular cadenas de una manera flexible y poderosa.
+- newValue es el valor que reemplazará al searchValue.
+```js
+//string.replace(searchValue, newValue);
+let text = "I love JavaScript!";
+console.log(text); // "I love JavaScript!"
+let newText = text.replace("JavaScript", "coding");
+console.log(newText);  // "I love coding!"
+```
+---
+### ¿Cómo puedes repetir una cadena x número de veces?:
+- puedes encontrar situaciones donde necesitas repetir una cadena un número específico de veces. Ya sea generando patrones repetidos o simplemente duplicando texto, el método repeat() proporciona una forma simple y efectiva de lograr esto.
+- repeat(): Es una función incorporada en JavaScript que te permite repetir una cadena un número especificado de veces. puede simplificar tareas que implican duplicación de cadenas, haciendo que tu código sea más conciso y legible. Ya sea que generes patrones de texto repetidos o llenes un espacio con caracteres, repeat() puede ahorrarte escribir bucles o código más complejo. No estás limitado a pasar un número directamente al método repeat(). También puedes pasar una variable que almacene un valor numérico.
+- Esta es la sintáxis básica:
+```js
+//string.repeat(count);
+let word = "Hello!";
+let repeatedWord = word.repeat(3);
+console.log(repeatedWord);  // "Hello!Hello!Hello!"
+```
+- string es la cadena que deseas repetir, y count es el número de veces que deseas que la cadena se repita. count no acepta numeros negativos. Si el count es un decimal como 2.5, el método repeat() lo redondeará hacia abajo al número entero más cercano. Si se pone cero el string estará vacio.
+- Infinity: es un valor especial que representa una cantidad infinita. Se usa para denotar números que son mayores que cualquier número finito. (no funciona en Count).
+```js
+let count = 4;
+let word = "Test";
+let repeatedWord = word.repeat(count);
+console.log(repeatedWord); // TestTestTestTest
+```
+- En este ejemplo, la variable count almacena el número de repeticiones. Esto puede ser útil cuando el número de repeticiones depende de la entrada del usuario u otros valores dinámicos en tu programa.
+- RangeError: se lanza al usar negativos o infinity con repeat().
+- Puedes encadenar métodos así:
+```js
+.firstMethod().secondMethod()
 ```
 - 
