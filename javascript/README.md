@@ -333,4 +333,63 @@ console.log(repeatedWord); // TestTestTestTest
 ```js
 .firstMethod().secondMethod()
 ```
-- 
+---
+#### tipos de números:
+- decimales, enteros y negativos. Todo bajo el mismo paraguas del tipo de datos Number. Tiene casos especiales como ∞ y NaN, o "Not a number".
+- Los números de punto flotante son números con puntos decimales. A menudo se les refiere simplemente como "floats" por los desarrolladores de JavaScript.
+- infinitos:
+```js
+const infiniteNumber = 1 / 0;
+console.log(infiniteNumber); // Infinity
+```
+- Aparte del sistema decimal estándar (base 10), JavaScript también admite números en diferentes bases como binario, octal y hexadecimal. 
+- Binario es un sistema de base 2 que sólo utiliza dígitos 1 y 0. 
+- Octal es un sistema de base 8 que usa sólo dígitos del 0 al 7. 
+- Hexadecimal es un sistema de base 16 que usa dígitos del 0 al 9 y las letras a a f, como se ve en los colores hex de CSS.
+---
+### ¿Cuáles son los diferentes operadores aritméticos en JavaScript?:
+- El operador de suma es un signo más (+). El operador de suma le permite encontrar el total de dos o más números. En las operaciones de suma, el orden de los números no importa.
+```js
+const difference = 10 + 5;
+console.log(difference); // 5
+```
+- El operador de resta es un signo menos (-). Le permite encontrar la diferencia entre dos números.
+```js
+const difference = 10 - 5;
+console.log(difference); // 5
+```
+- También puede asignar los números a variables y hacer la resta con los nombres de las variables:
+```js
+const num1 = 10;
+const num2 = 5;
+const result = num1 - num2;
+console.log(result); // 5
+```
+- el operador de multiplicación se representa con un asterisco (*) y se utiliza para encontrar el producto de dos o más números. El orden de los números que está multiplicando no importa (código igual que los anteriores).
+- el operador de división es una barra (/), que difiere del símbolo de división utilizado en las matemáticas tradicionales (÷). Realiza operaciones de división con el operador de división. El orden de los números que está dividiendo importa en este caso. (código igual a los anteriores).
+- Es importante tener en cuenta que si intenta dividir por cero, JavaScript devolverá Infinity.
+- El operador de resto, representado por un signo de porcentaje (%), devuelve el resto de una división. El resto en matemáticas es el valor sobrante después de realizar la división. (código igual a los anteriores).
+- El operador de exponenciación, representado por un doble asterisco (**), eleva un número a la potencia de otro. (código igual que los anteriores).
+- Es posible mezclar operadores en una sola operación o expresión:
+```js
+const result = 10 + 5 * 2 - 8 / 4;
+console.log(result); // 18
+```
+- Cuando mezclas diferentes operadores en una sola expresión, el motor de JavaScript sigue un sistema llamado precedencia de operadores para determinar el orden de las operaciones. La precedencia de operadores determina el orden en el que se ejecutan las operaciones en las expresiones.
+---
+### ¿Qué ocurre cuando intentas hacer cálculos con números y cadenas?:
+- Cuando usas + con un número y una cadena, JavaScript decide tratarlos a ambos como cadenas y los une. Si revisas el tipo del resultado con el operador typeof, verás que es, de hecho, una cadena:
+```js
+const result = 5 + '10';
+console.log(result); // 510
+console.log(typeof result); // string
+```
+- Esto se conoce como coerción de tipos. La coerción de tipos es cuando un valor de un tipo de datos se convierte en otro.
+- cuando intentas realizar otras operaciones aritméticas como resta, multiplicación o división con una cadena y un número. En estos casos, JavaScript intenta convertir la cadena en un número antes de hacer la operación –¡otra coerción de tipos!
+```js
+const subtractionResult = '10' - 5;
+console.log(subtractionResult); // 5
+console.log(typeof subtractionResult); // number
+```
+- así con multiplicación y división también. si la cadena no es un número sale NaN
+- JavaScript trata los booleanos como números en operaciones matemáticas: true = 1, false = 0, null= 0 y undefined = NaN.
