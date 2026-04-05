@@ -12,3 +12,9 @@ const numero2 = 10;
 const suma = numero1 + numero2;
 console.log(`La suma de ${numero1} y ${numero2} es: ${suma}.`);
 
+const bien = true;
+if (bien) {
+  console.log("¡Me alegra saber que estás bien!");
+} else {
+  console.log("Espero que te sientas mejor pronto.");
+}
