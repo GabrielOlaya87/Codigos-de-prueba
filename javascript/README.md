@@ -1066,3 +1066,61 @@ console.log(eligibilityStatus);
 - switch en JavaScript utilizan comparación estricta (===), lo que significa que no realizan conversión de tipos. Esto puede ser una ventaja en términos de previsibilidad y evitar errores sutiles.
 - En resumen, aunque tanto las sentencias switch como las cadenas de if/else if permiten lógica de múltiples ramas en tu código, tienen diferentes fortalezas. Las sentencias switch sobresalen en manejar múltiples valores posibles para una sola variable, mientras que las cadenas de if/else if ofrecen más flexibilidad para condiciones complejas. La elección entre ellas suele depender de los requisitos específicos de tu código y de las preferencias personales o del equipo en el estilo de programación.
 ---
+### ¿Cuál es el propósito de las funciones y cómo funcionan?
+- son piezas reutilizables de código que realizan una tarea específica o calculan un valor. Piensa en las funciones como una máquina que toma una entrada, realiza algunas operaciones y luego produce una salida. sintaxis:
+```js
+function greet() {
+  console.log("Hello, Jessica!");
+}
+```
+- In this example, we have declared a function called greet. Inside that function, we have a console.log that logs the message Hello, Jessica!. Si intentamos ejecutar este código, no veríamos aparecer el mensaje en la consola.
+- na llamada a función, o invocación, es cuando realmente usamos o ejecutamos la función. Para llamar a una función, necesitarás referenciar el nombre de la función seguido de un conjunto de paréntesis:
+```js
+function greet() {
+  console.log("Hello, Jessica!");
+}
+greet(); // "Hello, Jessica!"
+```
+- Ahora el mensaje de Hello, Jessica! estará registrado en la consola. ¿Pero qué si quisiéramos que el mensaje dijera Hello, Nick! o Hello, Anna!? No queremos escribir una nueva función cada vez que saludamos a un usuario diferente. En su lugar, podemos crear una función reutilizable que use parámetros de función y argumentos.
+- Los parámetros actúan como marcadores de posición para los valores que se pasarán a la función cuando se llame. Permiten que las funciones acepten entradas y trabajen con esa entrada. Los argumentos son los valores reales que se pasan a la función cuando se llama.
+```js
+function greet(name) {
+  console.log("Hello, " + name + "!");
+}
+greet("Alice"); // Hello, Alice!
+greet("Nick"); // Hello, Nick!
+```
+- El name sirve como el parámetro mientras que las cadenas Alice y Nick sirven como los argumentos. Ahora tenemos una función reutilizable que puede usarse docenas de veces en nuestro código con diferentes argumentos.
+- Cuando una función termina su ejecución, siempre devolverá un valor. Por defecto, el valor de regreso será undefined.
+```js
+function doSomething() {
+  console.log("Doing something...");
+}
+let result = doSomething();
+console.log(result); // undefined
+```
+- Si necesitas que tu función devuelva un valor específico, entonces deberás usar la declaración return. Aquí tienes un ejemplo de uso de una declaración return para devolver la suma de dos valores:
+```js
+function calculateSum(num1, num2) {
+  return num1 + num2;
+}
+console.log(calculateSum(3, 4)); // 7
+```
+- también puedes crear lo que se llama una función anónima. Una función anónima es una función sin nombre que puede asignarse a una variable de esta manera:
+```js
+const sum = function (num1, num2) {
+  return num1 + num2;
+};
+console.log(sum(3, 4)); // 7
+```
+- En este ejemplo, tenemos una variable const llamada sum y le estamos asignando una función anónima que devuelve la suma de num1 y num2. Luego podemos llamar a sum y pasar los números 3 y 4 para obtener el resultado de 7.
+- Las funciones admiten parámetros predeterminados, lo que te permite establecer valores predeterminados para los parámetros. Estos valores predeterminados se usan si la función se llama sin un argumento para ese parámetro. 
+```js
+function greetings(name = "Guest") {
+  console.log("Hello, " + name + "!");
+}
+greetings(); // Hello, Guest!
+greetings("Anna"); // Hello, Anna!
+```
+- En este ejemplo, si no se proporciona un argumento para nombre, se establece por defecto como Guest. En resumen, las funciones te permiten escribir un código reutilizable y organizado. Pueden recibir entradas (parámetros), realizar acciones y devolver salidas.
+---
