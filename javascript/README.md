@@ -994,3 +994,75 @@ console.log(undefined < 0);  // false
 console.log(undefined == 0); // false
 ```
 - Dadas estas diferencias, generalmente se recomienda usar el operador de igualdad estricta al comparar valores, especialmente al tratar con null y undefined. Este enfoque ayuda a evitar coerciones de tipo inesperadas y hace que el comportamiento de su código sea más predecible. En resumen, aunque null y undefined se utilizan para representar la ausencia de un valor, se comportan de manera diferente en las comparaciones.
+---
+### ¿Qué son las sentencias de `switch` y cómo difieren de las cadenas de `if/else`?
+- son ambas estructuras de control de flujo en programación que nos permiten ejecutar diferentes bloques de código en base a ciertas condiciones.
+- switch evalúa una expresión y compara su valor con una serie de cláusulas case. Cuando se encuentra una coincidencia, se ejecuta el bloque de código asociado con ese case. sintaxis:
+```js
+switch (expression) {
+  case value1:
+    // code to be executed if expression === value1
+    break;
+  case value2:
+    // code to be executed if expression === value2
+    break;
+  default:
+    // code to be executed if expression doesn't match any case
+}
+```
+- break al final de cada case es crucial. Informa al programa que debe salir del bloque switch una vez que se haya ejecutado un case coincidente. Sin ella, el programa continuaría ejecutando los casos subsiguientes, un comportamiento conocido como "fall-through".
+- switch se utilizan por lo general cuando se está comparando una sola variable con múltiples valores posibles. Son especialmente útiles cuando se tienen muchas condiciones potenciales para verificar contra una sola variable. 
+```js
+let dayOfWeek = 3; 
+
+switch (dayOfWeek) {
+    case 1:
+        console.log("It's Monday! Time to start the week strong.");
+        break;
+    case 2:
+        console.log("It's Tuesday! Keep the momentum going.");
+        break;
+    case 3:
+        console.log("It's Wednesday! We're halfway there.");
+        break;
+    case 4:
+        console.log("It's Thursday! Almost the weekend.");
+        break;
+    case 5:
+        console.log("It's Friday! The weekend is near.");
+        break;
+    case 6:
+        console.log("It's Saturday! Enjoy your weekend.");
+        break;
+    case 7:
+        console.log("It's Sunday! Rest and recharge.");
+        break;
+    default:
+        console.log("Invalid day! Please enter a number between 1 and 7.");
+}
+```
+- switch pueden ser más legibles y concisas al manejar muchos valores posibles para una sola variable. Las sentencias if/else if, por otro lado, son más flexibles. Pueden evaluar condiciones complejas y diferentes variables en cada cláusula. Esto las hace adecuadas para un rango más amplio de escenarios.
+```js
+let creditScore = 720; 
+let annualIncome = 60000; 
+let loanAmount = 200000; 
+
+let eligibilityStatus;
+
+if (creditScore >= 750 && annualIncome >= 80000) {
+    eligibilityStatus = "Eligible for premium loan rates.";
+} else if (creditScore >= 700 && annualIncome >= 50000) {
+    eligibilityStatus = "Eligible for standard loan rates.";
+} else if (creditScore >= 650 && annualIncome >= 40000) {
+    eligibilityStatus = "Eligible for subprime loan rates.";
+} else if (creditScore < 650) {
+    eligibilityStatus = "Not eligible due to low credit score.";
+} else {
+    eligibilityStatus = "Not eligible due to insufficient income.";
+}
+
+console.log(eligibilityStatus);
+```
+- switch en JavaScript utilizan comparación estricta (===), lo que significa que no realizan conversión de tipos. Esto puede ser una ventaja en términos de previsibilidad y evitar errores sutiles.
+- En resumen, aunque tanto las sentencias switch como las cadenas de if/else if permiten lógica de múltiples ramas en tu código, tienen diferentes fortalezas. Las sentencias switch sobresalen en manejar múltiples valores posibles para una sola variable, mientras que las cadenas de if/else if ofrecen más flexibilidad para condiciones complejas. La elección entre ellas suele depender de los requisitos específicos de tu código y de las preferencias personales o del equipo en el estilo de programación.
+---
