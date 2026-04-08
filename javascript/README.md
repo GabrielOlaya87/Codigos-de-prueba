@@ -1124,3 +1124,57 @@ greetings("Anna"); // Hello, Anna!
 ```
 - En este ejemplo, si no se proporciona un argumento para nombre, se establece por defecto como Guest. En resumen, las funciones te permiten escribir un código reutilizable y organizado. Pueden recibir entradas (parámetros), realizar acciones y devolver salidas.
 ---
+### ¿Qué son las funciones flecha y cómo funcionan?
+- Funciones, son fragmentos reutilizables de código que ayudan a que tu código sea más modular, fácil de mantener y más eficiente. Todos los ejemplos anteriores usaron la sintaxis regular de funciones, así:
+```js
+function greetings(name) {
+  console.log("Hello, " + name + "!");
+}
+```
+- Otra forma de escribir funciones en JavaScript es crear una expresión de función flecha. sintaxis de función flecha:
+```js
+const greetings = (name) => {
+  console.log("Hello, " + name + "!");
+};
+```
+- En este ejemplo revisado, estamos creando una variable const llamada greetings y asignándole una función anónima. Si tu lista de parámetros solo tiene un parámetro, entonces puedes eliminar los paréntesis así:
+```js
+const greetings = name => {
+  console.log("Hello, " + name + "!");
+};
+```
+- Si tu función flecha no tiene parámetros, entonces debes usar los paréntesis así:
+```js
+const greetings = () => {
+  console.log("Hello");
+};
+```
+- Al aprender por primera vez sobre funciones, tenías que envolver el cuerpo de la función en llaves. Pero si el cuerpo de tu función solo contiene una línea de código, puedes eliminar las llaves así:
+```js
+const greetings = name => console.log("Hello, " + name + "!");
+```
+- Es importante observar que eliminar los paréntesis y llaves para la sintaxis regular de función no funcionará. Obtendrás errores si intentas hacer algo como esto:
+```js
+// This will produce syntax errors 
+function greetings name console.log("Hello, " + name + "!");
+```
+- Este tipo de funciones de una línea solo funcionan si estás usando la sintaxis de función flecha. Otro concepto clave es la sentencia return. Aquí tienes un ejemplo de uso de la sintaxis de función flecha para calcular el área:
+```js
+const calculateArea = (width, height) => {
+  const area = width * height;
+  return area;
+};
+console.log(calculateArea(5, 3)); // 15
+```
+- Estamos creando una variable dentro de la función llamada area y luego devolvemos esa variable. Pero podríamos hacer nuestro código un poco más limpio y devolver el cálculo en sí mismo:
+```js
+const calculateArea = (width, height) => {
+  return width * height;
+}; 
+console.log(calculateArea(5, 3)); // 15
+```
+- Si intentaste eliminar las llaves y colocar el cálculo en la misma línea, recibirías un mensaje Uncaught SyntaxError: Unexpected token 'return'.
+- La razón por la que obtienes este error es porque necesitas eliminar la sentenciareturn. Cuando eliminas esa sentencia return.
+- Entonces, ¿cuándo deberías usar la sintaxis de función flecha? Bueno, depende. Muchos desarrolladores la usan consistentemente en sus proyectos personales. Sin embargo, al trabajar en equipo, la elección generalmente depende de si la base de código existente usa funciones regulares o funciones flecha.
+---
+###
