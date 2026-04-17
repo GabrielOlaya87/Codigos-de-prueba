@@ -1177,4 +1177,36 @@ console.log(calculateArea(5, 3)); // 15
 - La razón por la que obtienes este error es porque necesitas eliminar la sentenciareturn. Cuando eliminas esa sentencia return.
 - Entonces, ¿cuándo deberías usar la sintaxis de función flecha? Bueno, depende. Muchos desarrolladores la usan consistentemente en sus proyectos personales. Sin embargo, al trabajar en equipo, la elección generalmente depende de si la base de código existente usa funciones regulares o funciones flecha.
 ---
-###
+### ¿Qué es el alcance en la programación y cómo funcionan los alcances global, local y de bloque?
+- Alcance: En programación se refiere a la visibilidad y accesibilidad de las variables en diferentes partes de tu código. Determina dónde se pueden acceder o modificar las variables. En JavaScript, comprender el alcance es crucial para escribir código limpio, eficiente y libre de errores. Hay tres tipos principales de alcance: alcance global, alcance local y alcance de bloque.
+- Global: Es el alcance más externo en un programa JavaScript. Las variables declaradas en el alcance global son accesibles desde cualquier parte de tu código, incluidos dentro de funciones y bloques. Pueden ser convenientes, deben usarse con moderación ya que pueden llevar a conflictos de nombres y dificultar el mantenimiento de tu código. Ejemplo de una variable global:
+```js
+let globalVar = "I'm a global variable";
+function printGlobalVar() {
+    console.log(globalVar);
+}
+printGlobalVar(); // "I'm a global variable"
+```
+- En este ejemplo, globalVar se declara en el alcance global y se puede acceder dentro de la función printGlobalVar.
+- El alcance local, por otro lado, se refiere a variables que solo son accesibles dentro de una función. Aquí hay un ejemplo de alcance local:
+```js
+function greet() {
+    let message = "Hello, local scope!";
+    console.log(message);
+}
+greet(); // "Hello, local scope!"
+//console.log(message); // This will throw an error
+```
+- En este código, message es una variable local dentro de la función greet. Se puede usar dentro de la función, pero intentar acceder a ella fuera de la función resultará en un error.
+- El alcance de bloque es un concepto introducido con las palabras clave let y const en ES6. Un bloque es cualquier sección de código dentro de llaves, {}, como en sentencias if, bucles for o bucles while.
+- Las variables declaradas con let o const dentro de un bloque solo son accesibles dentro de ese bloque. Aquí hay un ejemplo de alcance de bloque:
+````js
+if (true) {
+    let blockVar = "I'm in a block";
+    console.log(blockVar); // "I'm in a block"
+}
+console.log(blockVar); // This will throw an error
+```
+- En este ejemplo, blockVar solo es accesible dentro del bloque if. Intentar acceder a ella fuera del bloque resultará en un error. Entender estos diferentes tipos de alcance es esencial para gestionar la accesibilidad de variables y evitar efectos secundarios no deseados en su código.
+- Las variables globales deben usarse con moderación, ya que pueden llevar a conflictos de nombres y dificultar el mantenimiento de su código. Las variables locales ayudan a mantener diferentes partes del código aisladas, lo cual es especialmente útil en programas más grandes. El alcance de bloque con let y const proporciona un control aún más fino sobre la accesibilidad de las variables, ayudando a prevenir errores y haciendo que su código sea más predecible.
+---
