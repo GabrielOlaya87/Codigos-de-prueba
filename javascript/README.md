@@ -1200,7 +1200,7 @@ greet(); // "Hello, local scope!"
 - En este código, message es una variable local dentro de la función greet. Se puede usar dentro de la función, pero intentar acceder a ella fuera de la función resultará en un error.
 - El alcance de bloque es un concepto introducido con las palabras clave let y const en ES6. Un bloque es cualquier sección de código dentro de llaves, {}, como en sentencias if, bucles for o bucles while.
 - Las variables declaradas con let o const dentro de un bloque solo son accesibles dentro de ese bloque. Aquí hay un ejemplo de alcance de bloque:
-````js
+```js
 if (true) {
     let blockVar = "I'm in a block";
     console.log(blockVar); // "I'm in a block"
@@ -1209,4 +1209,111 @@ console.log(blockVar); // This will throw an error
 ```
 - En este ejemplo, blockVar solo es accesible dentro del bloque if. Intentar acceder a ella fuera del bloque resultará en un error. Entender estos diferentes tipos de alcance es esencial para gestionar la accesibilidad de variables y evitar efectos secundarios no deseados en su código.
 - Las variables globales deben usarse con moderación, ya que pueden llevar a conflictos de nombres y dificultar el mantenimiento de su código. Las variables locales ayudan a mantener diferentes partes del código aisladas, lo cual es especialmente útil en programas más grandes. El alcance de bloque con let y const proporciona un control aún más fino sobre la accesibilidad de las variables, ayudando a prevenir errores y haciendo que su código sea más predecible.
+---
+### ¿Cuáles son las características clave de los arrays en JavaScript?
+- Un array en JavaScript es una colección ordenada de valores, cada uno identificado por un índice numérico. Los valores en un array de JavaScript pueden ser de diferentes tipos de datos, incluidos números, cadenas, booleanos, objetos e incluso otros arrays. 
+- Para crear un array en JavaScript, puedes usar corchetes, [], y separar los valores con comas. Aquí tienes un ejemplo:
+- Una de las características clave de los arrays es que están indexados desde cero, lo que significa que el primer elemento en un array tiene un índice de 0, el segundo elemento tiene un índice de 1, y así sucesivamente. Puedes acceder a elementos individuales en un array utilizando su índice. 
+```js
+let fruits = ["apple", "banana", "orange"];
+console.log(fruits[0]); // "apple"
+console.log(fruits[2]); // "orange"
+```
+- Los arrays en JavaScript tienen una propiedad especial length que devuelve el número de elementos en el array. Puedes acceder a esta propiedad utilizando la palabra clave length.
+```js
+let fruits = ["apple", "banana", "orange"];
+console.log(fruits.length); // 3
+```
+- Otra característica clave de los arrays en JavaScript es que son dinámicos, lo que significa que su tamaño puede cambiar después de haber sido creados. Puedes agregar o eliminar elementos de un array usando varios métodos de array. Los arrays en JavaScript son versátiles y útiles cuando se trata de almacenamiento de datos dentro de tus programas. A lo largo de este módulo, verás de primera mano cómo trabajar con arrays te ayudará a gestionar y manipular eficazmente colecciones de datos.
+---
+### ¿Cómo se accede y se actualizan elementos en un arreglo?
+- Es importante notar que si intentas acceder a un índice que no existe en el arreglo, JavaScript devolverá undefined.
+```js
+let fruits = ["apple", "banana", "cherry"];
+console.log(fruits[3]); // undefined
+```
+- Puedes actualizar un elemento asignando un nuevo valor a un índice específico.
+```js
+let fruits = ["apple", "banana", "cherry"];
+fruits[1] = "blueberry";
+console.log(fruits); // ["apple", "blueberry", "cherry"]
+```
+- En este ejemplo, hemos reemplazado banana con blueberry en el índice 1. Este método te permite cambiar cualquier elemento en el arreglo, siempre y cuando conozcas su índice. También puedes añadir nuevos elementos a un arreglo asignando un valor a un índice que aún no existe:
+```js
+let fruits = ["apple", "banana", "cherry"];
+fruits[3] = "date";
+console.log(fruits); // ["apple", "banana", "cherry", "date"]
+```
+- Sin embargo, ten cuidado al hacer esto. Si asignas un valor a un índice que es mucho más grande que la longitud actual del arreglo, crearás elementos indefinidos para los índices intermedios, lo que puede llevar a un comportamiento inesperado. A medida que continúes trabajando con JavaScript, encontrarás que estas formas de acceder y actualizar elementos de un arreglo son fundamentales para muchas tareas de programación. Ya sea que estés construyendo una lista de tareas simple o procesando estructuras de datos complejas, estas habilidades serán invaluables.
+---
+### ¿Cómo añades y eliminas elementos desde el principio y el final de un array?
+- Hay cuatro métodos principales para añadir y eliminar elementos desde el principio y el final de un array: push(), pop(), shift() y unshift().
+- push(): se utiliza para añadir uno o más elementos al final de un array. El valor de retorno para el método push() es la nueva longitud del array.
+```js
+const fruits = ["apple", "banana"];
+const newLength = fruits.push("orange");
+console.log(newLength); // 3
+console.log(fruits); // ["apple", "banana", "orange"]
+```
+- comenzamos con un array llamado fruits que contiene dos elementos. Luego utilizamos el método push() para añadir la cadena orange al final del array.
+- Quizás hayas notado que estamos utilizando const al declarar el array fruits. Pero, ¿por qué es posible añadir más elementos a este array fruits cuando fruits es una constante? Esto es posible porque declarar un array con la palabra clave const crea una referencia al array. Mientras que el array en sí es mutable y puede ser modificado, no puedes reasignar un nuevo valor a la constante fruits, así:
+```js
+const fruits = ["apple", "banana"];
+fruits = ["This", "will", "not", "work"];
+console.log(fruits); // Uncaught TypeError: Assignment to constant variable. 
+```
+- pop(): elimina el último elemento de un array y devuelve ese elemento. También modifica el array original.
+```js
+let fruits = ["apple", "banana", "orange"];
+let lastFruit = fruits.pop();
+console.log(fruits); // ["apple", "banana"]
+console.log(lastFruit); // "orange"
+```
+- comenzamos con un array de tres frutas. El método pop() elimina el último elemento (orange) del array y lo devuelve. El array fruits original es modificado y contiene solamente dos elementos.
+- unshift(): añade uno o más elementos al principio de un array y devuelve su nueva longitud. Funciona de manera similar a push(), pero modifica el inicio del array en lugar del final. 
+```js
+let numbers = [2, 3];
+let newLength = numbers.unshift(1);
+console.log(numbers); // [1, 2, 3]
+console.log(newLength); // 3
+```
+- utilizamos unshift() para añadir el número 1 al principio del array numbers. El método devuelve la nueva longitud del array, que es 3.
+- shift(): elimina el primer elemento de un array y devuelve ese elemento. Es similar a pop(), pero funciona al inicio del array en lugar del final.
+```js
+let colors = ["red", "green", "blue"];
+let firstColor = colors.shift();
+console.log(colors); // ["green", "blue"]
+console.log(firstColor); // "red"
+```
+- comenzamos con un array de tres colores. El método shift() elimina el primer elemento (red) del array y lo devuelve. El array colors original se modifica para contener solamente dos elementos.
+- Observa que mientras push() y unshift() pueden añadir múltiples elementos a la vez, pop() y shift() eliminan solo un elemento a la vez.
+---
+### ¿Cuál es la diferencia entre arreglos unidimensionales y bidimensionales?
+- En programación, los arreglos son estructuras de datos fundamentales usadas para almacenar colecciones de elementos.
+-  arreglo unidimensional, a menudo llamado simplemente arreglo, es como una sola fila de cajas. Imagina que tienes una fila de casilleros en una estación de tren. Cada casillero puede contener un elemento, y puedes acceder a cualquier casillero directamente si conoces su número.
+-  cada elemento en un arreglo unidimensional se accede usando un solo índice. Por ejemplo, podrías crear y usar un arreglo unidimensional así:
+```js
+12
+let fruits = ["apple", "banana", "cherry", "date"];
+console.log(fruits[2]); // "cherry"
+```
+- arreglos bidimensionales: Si un arreglo unidimensional es como una sola fila de casilleros, un arreglo bidimensional es como una cuadrícula de casilleros: múltiples filas y columnas. En programación, un arreglo bidimensional es esencialmente un arreglo de arreglos. Se usa para representar datos que tienen una estructura natural en forma de cuadrícula, como un tablero de ajedrez, una hoja de cálculo o los píxeles de una imagen.
+- Para acceder a un elemento en un arreglo bidimensional, necesitas dos índices: uno para la fila y otro para la columna. 
+```js
+let chessboard = [
+    ["R", "N", "B", "Q", "K", "B", "N", "R"],
+    ["P", "P", "P", "P", "P", "P", "P", "P"],
+    [" ", " ", " ", " ", " ", " ", " ", " "],
+    [" ", " ", " ", " ", " ", " ", " ", " "],
+    [" ", " ", " ", " ", " ", " ", " ", " "],
+    [" ", " ", " ", " ", " ", " ", " ", " "],
+    ["p", "p", "p", "p", "p", "p", "p", "p"],
+    ["r", "n", "b", "q", "k", "b", "n", "r"]
+];
+console.log(chessboard[0][3]); // "Q"
+```
+-  El primer índice, 0, selecciona la primera fila, y el segundo índice, 3, selecciona la cuarta columna de esa fila.
+- La diferencia clave entre arreglos unidimensionales y bidimensionales radica en cómo accedes y organizas los datos. Los arreglos unidimensionales usan un solo índice y son adecuados para datos lineales como listas o secuencias. Los arreglos bidimensionales usan dos índices y son ideales para estructuras de datos en forma de cuadrícula.
+- Vale la pena señalar que en JavaScript, los arreglos bidimensionales son en realidad arreglos de arreglos. Esto significa que cada elemento del arreglo externo es en sí mismo un arreglo. Esta estructura anidada permite una gran flexibilidad pero también requiere un manejo cuidadoso para evitar errores. A medida que avanzas en tu viaje de programación, descubrirás que elegir entre arreglos unidimensionales y bidimensionales depende de la naturaleza de tus datos y de cómo necesitas manipularlos.
+- Los arreglos unidimensionales son más simples y suficientes para muchas tareas, mientras que los arreglos bidimensionales se vuelven invaluables cuando se trabaja con datos más complejos y estructurados.
 ---
