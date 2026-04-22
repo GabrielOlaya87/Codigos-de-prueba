@@ -1066,7 +1066,7 @@ console.log(eligibilityStatus);
 - switch en JavaScript utilizan comparación estricta (===), lo que significa que no realizan conversión de tipos. Esto puede ser una ventaja en términos de previsibilidad y evitar errores sutiles.
 - En resumen, aunque tanto las sentencias switch como las cadenas de if/else if permiten lógica de múltiples ramas en tu código, tienen diferentes fortalezas. Las sentencias switch sobresalen en manejar múltiples valores posibles para una sola variable, mientras que las cadenas de if/else if ofrecen más flexibilidad para condiciones complejas. La elección entre ellas suele depender de los requisitos específicos de tu código y de las preferencias personales o del equipo en el estilo de programación.
 ---
-### ¿Cuál es el propósito de las funciones y cómo funcionan?
+## ¿Cuál es el propósito de las funciones y cómo funcionan?
 - son piezas reutilizables de código que realizan una tarea específica o calculan un valor. Piensa en las funciones como una máquina que toma una entrada, realiza algunas operaciones y luego produce una salida. sintaxis:
 ```js
 function greet() {
@@ -1210,7 +1210,7 @@ console.log(blockVar); // This will throw an error
 - En este ejemplo, blockVar solo es accesible dentro del bloque if. Intentar acceder a ella fuera del bloque resultará en un error. Entender estos diferentes tipos de alcance es esencial para gestionar la accesibilidad de variables y evitar efectos secundarios no deseados en su código.
 - Las variables globales deben usarse con moderación, ya que pueden llevar a conflictos de nombres y dificultar el mantenimiento de su código. Las variables locales ayudan a mantener diferentes partes del código aisladas, lo cual es especialmente útil en programas más grandes. El alcance de bloque con let y const proporciona un control aún más fino sobre la accesibilidad de las variables, ayudando a prevenir errores y haciendo que su código sea más predecible.
 ---
-### ¿Cuáles son las características clave de los arrays en JavaScript?
+## ¿Cuáles son las características clave de los arrays en JavaScript?
 - Un array en JavaScript es una colección ordenada de valores, cada uno identificado por un índice numérico. Los valores en un array de JavaScript pueden ser de diferentes tipos de datos, incluidos números, cadenas, booleanos, objetos e incluso otros arrays. 
 - Para crear un array en JavaScript, puedes usar corchetes, [], y separar los valores con comas. Aquí tienes un ejemplo:
 - Una de las características clave de los arrays es que están indexados desde cero, lo que significa que el primer elemento en un array tiene un índice de 0, el segundo elemento tiene un índice de 1, y así sucesivamente. Puedes acceder a elementos individuales en un array utilizando su índice. 
@@ -1385,4 +1385,206 @@ let str = "coding";
 let reversed = str.split("").reverse().join("");
 console.log(reversed); //"gnidoc"
 ```
-- 
+---
+### ¿Cómo obtener el índice de un elemento en un arreglo usando el método `indexOf`?
+- indexOf() es útil para encontrar el primer índice de un elemento específico dentro de un arreglo. Si no se puede encontrar el elemento, entonces devolverá -1. Esta es la sintaxis básica:
+```js
+array.indexOf(element, fromIndex)
+```
+element representa el valor que quieres buscar dentro del arreglo, y el parámetro fromIndex es la posición desde la cual debe empezar la búsqueda. El parámetro fromIndex es opcional. Si no se proporciona fromIndex, la búsqueda comienza desde el inicio del arreglo. 
+```js
+let fruits = ["apple", "banana", "orange", "banana"];
+let index = fruits.indexOf("banana");
+console.log(index); // 1
+```
+- En este ejemplo, tenemos un arreglo fruits que contiene varios nombres de frutas. Usamos el método indexOf() para encontrar el índice de la cadena banana dentro del arreglo fruits. Dado que banana está presente en el índice 1, el método devuelve 1, que se almacena en la variable index y se registra en la consola. Si el elemento que buscas no se encuentra en el arreglo, indexOf() devuelve -1.
+- Si deseas comenzar a buscar un elemento después de un número de índice específico, puedes pasar un segundo argumento como en este ejemplo:
+```js
+let colors = ["red", "green", "blue", "yellow", "green"];
+let index = colors.indexOf("green", 3);
+console.log(index); // 4
+```
+- En este ejemplo, la búsqueda no comienza desde el inicio de un arreglo, sino desde el número de índice 3, que es yellow y obtiene el resultado de 4.
+---
+###  ¿Cómo se agregan y eliminan elementos del medio de un arreglo?
+- El método splice() en JavaScript es una forma poderosa de modificar arreglos. Permite agregar o eliminar elementos de cualquier posición en un arreglo, incluido el medio. El valor de retorno para el método splice() será un arreglo de los elementos eliminados del arreglo. Si no se eliminó nada, entonces se devolverá un arreglo vacío.
+- Es importante notar que este método mutará el arreglo original, modificándolo en el lugar en lugar de crear un nuevo arreglo. Esto es algo que tener en cuenta al trabajar con splice(). Esta es la sintáxis básica:
+```js
+array.splice(startIndex, itemsToRemove, item1, item2)
+```
+- startIndex especifica el índice en el que comenzar a modificar el arreglo, mientras que itemsToRemove es un parámetro opcional que indica cuántos elementos eliminar. Si itemsToRemove se omite, splice() eliminará todos los elementos del startIndex hasta el final del arreglo. Los parámetros subsecuentes (item1, item2, etc.) son los elementos a añadir al arreglo, comenzando en el índice de inicio.
+- Comencemos con un ejemplo de eliminación de elementos del medio de un arreglo:
+``js
+let fruits = ["apple", "banana", "orange", "mango", "kiwi"];
+let removed = fruits.splice(2, 2);
+console.log(fruits);  // ["apple", "banana", "kiwi"]
+console.log(removed); // ["orange", "mango"]
+```
+- En este ejemplo, splice(2, 2) comienza en el índice 2 y elimina 2 elementos. El arreglo modificado ahora consistirá de solo manzana, plátano y kiwi. Ahora veamos cómo agregar elementos al medio de un arreglo:
+```js
+let colors = ["red", "green", "blue"];
+colors.splice(1, 0, "yellow", "purple");
+console.log(colors); // ["red", "yellow", "purple", "green", "blue"]
+```
+- Aquí, splice(1, 0, "amarillo", "morado") comienza en el índice 1, elimina 0 elementos e inserta amarillo y morado. El segundo parámetro (0) indica que no se eliminan elementos antes de la inserción. También puedes usar splice() para eliminar y agregar elementos simultáneamente:
+```js
+let numbers = [1, 2, 3, 4, 5];
+numbers.splice(1, 2, 6, 7, 8);
+console.log(numbers); // [1, 6, 7, 8, 4, 5]
+```
+- En este caso, splice(1, 2, 6, 7, 8) comienza en el índice 1, elimina 2 elementos (2 y 3) e inserta 6, 7 y 8. Si necesitas mantener el arreglo original sin cambios, debes crear una copia antes de usar splice():
+```js
+let original = [1, 2, 3, 4, 5];
+let copy = [...original];
+copy.splice(2, 1, 6);
+console.log(original); // [1, 2, 3, 4, 5]
+console.log(copy);     // [1, 2, 6, 4, 5]
+```
+- Cuando usamos copy.splice(2, 1, 6), modifica el arreglo copia eliminando el elemento en el índice 2 (que es 3) e insertando el nuevo elemento 6 en esa posición.
+- Un caso de uso común para splice() es eliminar un solo elemento de un arreglo cuando conoces su índice:
+```js
+let fruits = ["apple", "banana", "orange", "mango"];
+let indexToRemove = fruits.indexOf("orange");
+if (indexToRemove !== -1) {
+    fruits.splice(indexToRemove, 1);
+}
+console.log(fruits); // ["apple", "banana", "mango"]
+```
+- En este ejemplo, primero usamos el método indexOf() para encontrar el índice del elemento naranja en el arreglo frutas. El método indexOf() devuelve el índice de la primera aparición del elemento dado o -1 si el elemento no se encuentra en el arreglo.Luego comparamos indexToRemove con -1 para asegurarnos de que el elemento existe en el arreglo antes de intentar eliminarlo. Si indexToRemove no es igual a -1 (lo que significa que se encontró el elemento), usamos splice() para eliminar un elemento comenzando desde la posición indexToRemove.
+- También puedes usar splice() para vaciar un arreglo eliminando todos los elementos:
+```js
+let array = [1, 2, 3, 4, 5];
+array.splice(0);
+console.log(array); // []
+```
+- Aunque splice() es poderoso, vale la pena señalar que para arreglos muy grandes, puede ser menos eficiente que otros métodos, especialmente al modificar el inicio del arreglo. Esto se debe a que splice() podría necesitar desplazar todos los elementos posteriores. En tales casos, si solo estás añadiendo o eliminando elementos al final del arreglo, métodos como push(), pop(), unshift() y shift() podrían ser más apropiados.
+- En conclusión, el método splice() es una forma versátil de modificar arreglos en JavaScript. Permite un control preciso sobre la adición y eliminación de elementos de cualquier posición en un arreglo. Comprender cómo usar splice() eficazmente puede mejorar en gran medida tu capacidad para manipular arreglos en tu código JavaScript.
+---
+### ¿Cómo puedes verificar si un arreglo contiene un cierto valor?
+- el método includes() es una forma simple y eficiente de verificar si un arreglo contiene un valor específico. Este método devuelve un valor booleano: true si el arreglo contiene el elemento especificado, y false en caso contrario.
+- El método includes() es particularmente útil cuando necesitas verificar rápidamente la presencia de un elemento en un arreglo sin necesidad de conocer su posición exacta. Comencemos con un ejemplo de cómo usar el método includes():
+```js
+let fruits = ["apple", "banana", "orange", "mango"];
+console.log(fruits.includes("banana")); // true
+console.log(fruits.includes("grape"));  // false
+```
+- includes() distingue entre mayúsculas y minúsculas cuando se trata de cadenas. Esto significa que Banana con una B mayúscula y banana con todas las letras en minúscula se consideran valores diferentes.
+```js
+let fruits = ["apple", "banana", "orange"];
+console.log(fruits.includes("banana")); // true
+console.log(fruits.includes("Banana")); // false
+```
+- includes() también puede aceptar un segundo parámetro opcional que especifica la posición en el arreglo para iniciar la búsqueda. Esto es útil si quieres verificar la presencia de un elemento en una parte específica del arreglo.
+```js
+let numbers = [10, 20, 30, 40, 50, 30, 60];
+console.log(numbers.includes(30, 3)); // true
+console.log(numbers.includes(30, 4)); // true
+```
+- Para el primer console.log, estamos buscando el número 30 comenzando en el índice 3. En este caso, hay un número 30 que aparece después del índice 3, por lo que el método includes() devuelve true.
+- Lo mismo sucede con el segundo console.log. Estamos buscando el número 30 comenzando en el índice 4. Dado que el número 30 aparece después de ese índice, retornará true.
+- Vale la pena señalar que includes() usa la comparación de igualdad estricta (===), lo que significa que puede distinguir entre diferentes tipos.
+```js
+let mixedArray = [1, "2", 3, "4", 5];
+console.log(mixedArray.includes(2));  // false
+console.log(mixedArray.includes("2")); // true
+```
+- En este caso, el número 2 y la cadena "2" se consideran diferentes tipos de datos. Por lo tanto, el primer console.log devolverá false, mientras que el segundo console.log devolverá true.
+- El método includes() es una herramienta poderosa para verificar la presencia de elementos en arreglos. Es simple de usar, eficiente y puede ahorrarte de escribir bucles más complejos o condiciones para buscar en los arreglos. Ya sea que estés trabajando con cadenas, números o tipos de datos mixtos, includes() proporciona una manera directa de verificar si un valor existe en tu arreglo.
+---
+### ¿Qué es una copia superficial de un array, y cuáles son algunas formas de crear estas copias?
+- Una copia superficial de un arreglo es un nuevo arreglo que tiene los mismos elementos que el original. Si el arreglo solo contiene valores primitivos como números o cadenas, el nuevo arreglo es completamente independiente. Pero si el arreglo contiene otros arreglos dentro, tanto el original como la copia tienen referencias a los mismos arreglos internos. Esto significa que si cambias algo dentro de un arreglo interno compartido, verás ese cambio en ambos arreglos. Las copias superficiales son útiles cuando necesitas modificar la estructura de nivel superior, como agregar, eliminar o reordenar elementos, sin modificar el arreglo original ni el arreglo interno. Hay varios métodos para crear copias superficiales de arrays, y exploraremos algunos de los más comunes: concat(), slice() y el operador de propagación.
+- concat(). Este método crea un nuevo array al fusionar dos o más arrays. Cuando se utiliza con un solo array, efectivamente crea una copia superficial. Aquí tienes un ejemplo:
+```js
+const originalArray = [1, 2, 3];
+const copyArray = [].concat(originalArray);
+console.log(copyArray); // [1, 2, 3]
+console.log(copyArray === originalArray); // false
+```
+- En este ejemplo, estamos utilizando el método concat() para concatenar un array vacío al originalArray. Esto creará un nuevo array que es una copia superficial de originalArray. El copyArray contiene los mismos elementos que originalArray, pero es un objeto array diferente, por lo que la verificación de igualdad estricta (===) devuelve false.
+- Otro método para crear una copia superficial es el método slice(). Cuando se llama sin argumentos, slice() devuelve una copia superficial de todo el array. A continuación te mostramos como se hace:
+```js
+const originalArray = [1, 2, 3];
+const copyArray = originalArray.slice();
+console.log(copyArray); // [1, 2, 3]
+console.log(copyArray === originalArray); // false
+```
+- En este caso, originalArray.slice() crea un nuevo array que es una copia superficial de originalArray. Nuevamente, el copyArray contiene los mismos elementos pero es un objeto array diferente.
+- El operador de propagación (...), introducido en ES6, proporciona una forma concisa de crear copias superficiales de arrays.
+```js
+const originalArray = [1, 2, 3];
+const copyArray = [...originalArray];
+console.log(copyArray); // [1, 2, 3]
+console.log(copyArray === originalArray); // false
+```
+- El operador de propagación (...) expande los elementos de originalArray en un nuevo array, creando efectivamente una copia superficial. Es importante observar que todos estos métodos crean nuevos objetos array, lo que significa que puedes modificar la copia sin afectar al array original.
+```js
+const originalArray = [1, 2, 3];
+const copyArray = [...originalArray];
+copyArray.push(4);
+console.log(originalArray); // [1, 2, 3]
+console.log(copyArray);     // [1, 2, 3, 4]
+```
+- En este ejemplo, añadir un elemento a copyArray no afecta a originalArray.
+- En resumen, las copias superficiales de arrays pueden crearse fácilmente usando métodos como concat(), slice() o el operador de propagación. Estos métodos son útiles para crear nuevos arrays que pueden manipularse de manera independiente del array original.
+---
+## ¿Qué es un objeto en JavaScript y cómo puedes acceder a las propiedades de un objeto?
+- En JavaScript, un objeto es una estructura de datos fundamental que te permite almacenar y organizar datos y funcionalidades relacionadas. Puedes pensar en un objeto como un contenedor que guarda varias piezas de información, al igual que un archivo almacena diferentes carpetas y documentos. Estas piezas de información se llaman propiedades y consisten en un nombre (o clave) y un valor.
+```js
+const exampleObject = {
+  propertyName: value,
+}
+```
+- Los objetos son increíblemente versátiles y forman la columna vertebral de JavaScript. De hecho, casi todo en JavaScript es un objeto o se puede tratar como uno. Esto incluye arreglos, funciones, e incluso tipos de datos primitivos como cadenas y números cuando se usan de cierta manera. Esta naturaleza centrada en objetos de JavaScript es una de las razones por las que es un lenguaje tan flexible y poderoso. Vamos a ver cómo puedes crear un objeto:
+```js
+const person = {
+  name: "Alice",
+  age: 30,
+  city: "New York"
+};
+```
+- En este ejemplo, hemos creado un objeto llamado persona con tres propiedades: nombre, edad, y ciudad. Cada propiedad tiene un nombre y un valor, separados por un colon. Ahora, exploremos cómo puedes acceder a estas propiedades. Hay dos formas principales de acceder a las propiedades del objeto en JavaScript: notación de punto y notación de corchetes.
+- La notación de punto es la forma más común y directa de acceder a las propiedades del objeto. Aquí está la sintaxis básica para la notación de punto:
+```js
+objectName.propertyName
+```
+- Así es como usarías la notación de punto con nuestro objeto persona:
+```js
+const person = {
+  name: "Alice",
+  age: 30,
+  city: "New York"
+};
+console.log(person.name);  // Alice
+console.log(person.age);   // 30
+```
+- La notación de punto es concisa y fácil de leer, lo que la convierte en la opción preferida cuando conoces el nombre exacto del propiedad que quieres acceder y ese nombre es un identificador válido de JavaScript (lo que significa que no comienza con un número y no contiene caracteres especiales o espacios).
+- La notación de corchetes, en cambio, te permite acceder a las propiedades del objeto usando una cadena dentro de corchetes cuadrados. Así es como usarías la notación de corchetes:
+```js
+const person = {
+  name: "Alice",
+  age: 30,
+  city: "New York"
+};
+console.log(person["name"]); // Alice
+console.log(person["age"]); //  30
+```
+- La notación de corchetes es más flexible que la notación de punto porque te permite usar nombres de propiedades que no son identificadores válidos de JavaScript. Por ejemplo, si tuvieras un nombre de propiedad con espacios o que comienza con un número, necesitas usar la notación de corchetes:
+```js
+const oddObject = {
+  "1stProperty": "Hello",
+  "property with spaces": "World"
+};
+console.log(oddObject["1stProperty"]);  // Hello
+console.log(oddObject["property with spaces"]);  // World
+```
+- Otra ventaja de la notación de corchetes es que te permite usar variables para acceder a las propiedades dinámicamente:
+```js
+const person = {
+  name: "Alice",
+  age: 30,
+  city: "Wonderland"
+};
+let propertyName = "city";
+console.log(person[propertyName]); // Wonderland
+```
+- Esta flexibilidad hace que la notación de corchetes sea particularmente útil cuando no conoces el nombre exacto de la propiedad al momento de escribir el código, o cuando trabajas con nombres de propiedades que provienen de la entrada del usuario u otra fuente dinámica. Vale la pena señalar que los objetos en JavaScript son increíblemente poderosos y versátiles. Pueden contener no solo valores simples como cadenas y números, sino también arreglos, u otros objetos.
