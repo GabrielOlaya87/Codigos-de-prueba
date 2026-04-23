@@ -1533,6 +1533,7 @@ console.log(copyArray);     // [1, 2, 3, 4]
 const exampleObject = {
   propertyName: value,
 }
+const animal = {}; // empty object
 ```
 - Los objetos son increíblemente versátiles y forman la columna vertebral de JavaScript. De hecho, casi todo en JavaScript es un objeto o se puede tratar como uno. Esto incluye arreglos, funciones, e incluso tipos de datos primitivos como cadenas y números cuando se usan de cierta manera. Esta naturaleza centrada en objetos de JavaScript es una de las razones por las que es un lenguaje tan flexible y poderoso. Vamos a ver cómo puedes crear un objeto:
 ```js
@@ -1543,10 +1544,7 @@ const person = {
 };
 ```
 - En este ejemplo, hemos creado un objeto llamado persona con tres propiedades: nombre, edad, y ciudad. Cada propiedad tiene un nombre y un valor, separados por un colon. Ahora, exploremos cómo puedes acceder a estas propiedades. Hay dos formas principales de acceder a las propiedades del objeto en JavaScript: notación de punto y notación de corchetes.
-- La notación de punto es la forma más común y directa de acceder a las propiedades del objeto. Aquí está la sintaxis básica para la notación de punto:
-```js
-objectName.propertyName
-```
+- La notación de punto es la forma más común y directa de acceder a las propiedades del objeto. Aquí está la sintaxis básica para la notación de punto: `objectName.propertyName`
 - Así es como usarías la notación de punto con nuestro objeto persona:
 ```js
 const person = {
@@ -1588,3 +1586,203 @@ let propertyName = "city";
 console.log(person[propertyName]); // Wonderland
 ```
 - Esta flexibilidad hace que la notación de corchetes sea particularmente útil cuando no conoces el nombre exacto de la propiedad al momento de escribir el código, o cuando trabajas con nombres de propiedades que provienen de la entrada del usuario u otra fuente dinámica. Vale la pena señalar que los objetos en JavaScript son increíblemente poderosos y versátiles. Pueden contener no solo valores simples como cadenas y números, sino también arreglos, u otros objetos.
+---
+### ¿Cómo puedes remover propiedades de un objeto?
+- Hay varias maneras de remover propiedades de un objeto, siendo el operador delete el método más directo y comúnmente usado. Cuando usas delete, remueve la propiedad seleccionada del objeto.
+```js
+ const person = {
+  name: "Alice",
+  age: 30,
+  job: "Engineer"
+};
+delete person.job;
+console.log(person.job); // undefined
+```
+- En este ejemplo, comenzamos con un objeto persona que tiene tres propiedades: nombre, edad y trabajo. Luego, usamos el operador delete para eliminar la propiedad trabajo. Después de la eliminación, el objeto persona ya no tiene la propiedad trabajo.
+- Otra forma de eliminar propiedades es usando asignación declaratoria con parámetros rest. Este enfoque no elimina realmente la propiedad, pero crea un nuevo objeto sin las propiedades especificadas:
+```js
+const person = {
+  name: "Bob",
+  age: 25,
+  job: "Designer",
+  city: "New York"
+};
+const { job, city, ...remainingProperties } = person;
+// { name: "Bob", age: 25 }
+console.log(remainingProperties);
+```
+- En este ejemplo, usamos la asignación por desestructuración para extraer trabajo y ciudad del objeto persona, y recopilamos las propiedades restantes en un nuevo objeto llamado propiedadesRestantes. Esto crea un nuevo objeto sin las propiedades trabajo y ciudad.
+---
+### Cómo comprobar si un objeto tiene una propiedad?
+- En JavaScript, hay varias maneras de comprobar si un objeto tiene una propiedad específica. Es util cuando estás manejando datos de fuentes externas o cuando necesitas asegurarte de que ciertas propiedades existen antes de usarlas.
+- hasOwnProperty(): Este método devuelve un booleano que indica si el objeto tiene la propiedad especificada como su propia propiedad.
+```js
+const person = {
+  name: "Alice",
+  age: 30
+};
+console.log(person.hasOwnProperty("name")); // true
+console.log(person.hasOwnProperty("job")); // false
+console.log(person.hasOwnProperty("age")); // true
+```
+- En este ejemplo, tenemos un objeto llamado persona con dos propiedades: nombre y edad. Para comprobar si nombre es una propiedad en el objeto persona, usamos el método hasOwnProperty(). Dado que nombre es una propiedad, devolverá true. Pero cuando usamos el método hasOwnProperty() para comprobar si trabajo es una propiedad, devolverá false porque no existe en el objeto.
+- Object.hasOwn(): es la forma moderna y recomendada de verificar si un objeto tiene una propiedad propia (no heredada). Piénsalo como una versión mejorada y más segura de hasOwnProperty(). La sintaxis es Object.hasOwn(object, propertyName) — pasas el objeto como primer argumento y el nombre de la propiedad como segundo.
+```js
+Object.hasOwn(object, propertyName);// La sintaxis
+const person = {
+  name: "Alice",
+  age: 30
+};
+console.log(Object.hasOwn(person, "name")); // true
+console.log(Object.hasOwn(person, "job")); // false // ejemplo
+```
+- En este ejemplo, Object.hasOwn(person, "name") devuelve true porque name existe directamente en el objeto person. Object.hasOwn(person, "job") devuelve false porque job nunca se añadió al objeto. Una cosa muy importante para entender es que Object.hasOwn() solo verifica si la propiedad existe — no le importa el valor de la propiedad. Esto significa que aún devuelve true incluso cuando el valor es 0, false, null o undefined.
+```js
+const user = {
+  username: "coder123",
+  score: 0,
+  isActive: false,
+  nickname: null
+};
+// Object.hasOwn() correctly reports these all exist
+console.log(Object.hasOwn(user, "score"));    // true  (value is 0, but property exists)
+console.log(Object.hasOwn(user, "isActive")); // true  (value is false, but property exists)
+console.log(Object.hasOwn(user, "nickname")); // true  (value is null, but property exists)
+console.log(Object.hasOwn(user, "email"));   // false (property was never added)
+// Danger! Using if() directly gives wrong results for falsy values
+if (user.score) {
+  console.log("Has score"); // This will NOT print even though score exists!
+}
+// Safe! Object.hasOwn() gives correct result
+if (Object.hasOwn(user, "score")) {
+  console.log("Has score:", user.score); // Has score: 0
+}
+```
+- Otra manera de comprobar la existencia de una propiedad en un objeto es usar el operador `in`. Al igual que hasOwnProperty(), el operador in devolverá true si la propiedad existe en el objeto.
+```js
+const person = {
+  name: "Bob",
+  age: 25
+};
+console.log("name" in person);  // true
+```
+- En este ejemplo, "nombre" in persona devuelve true porque nombre es una propiedad de persona.
+- El tercer método implica verificar si una propiedad es undefined. Este enfoque puede ser útil, pero tiene algunas limitaciones. 
+```js
+const car = {
+  brand: "Toyota",
+  model: "Corolla",
+  year: 2020
+};
+console.log(car.brand !== undefined); // true
+console.log(car.color !== undefined); // false
+```
+- En este código, comprobamos si auto.marca y auto.color no son undefined. Esto funciona porque acceder a una propiedad inexistente en un objeto devuelve undefined. Sin embargo, este método puede dar falsos negativos si una propiedad tiene explícitamente el valor undefined. En la práctica, la elección entre estos métodos a menudo depende de los requisitos específicos de tu código. Comprender las diferencias entre ellos te ayudará a tomar la decisión correcta en diferentes escenarios.
+---
+### ¿Cómo trabajas con el acceso a propiedades desde objetos y arreglos anidados en objetos?
+- Al trabajar con JavaScript, a menudo te encontrarás con estructuras de datos complejas que involucran objetos anidados y arreglos dentro de objetos. Estas estructuras pueden representar datos ricos y jerárquicos, pero también requieren de un claro entendimiento de cómo acceder y manipular los datos dentro de ellas. Exploraremos cómo navegar por estas estructuras anidadas de manera efectiva.
+- Acceder a propiedades desde objetos anidados implica usar la notación de puntos o la notación de corchetes, de manera similar a como se accede a propiedades de objetos simples. Sin embargo, necesitarás encadenar estos accesos para descender a la estructura anidada. Por ejemplo, consideremos un objeto anidado que representa a una persona con información de contacto:
+```js
+const person = {
+  name: "Alice",
+  age: 30,
+  contact: {
+    email: "alice@example.com",
+    phone: {
+      home: "123-456-7890",
+      work: "098-765-4321"
+    }
+  }
+};
+// Para acceder al número de teléfono del trabajo de Alice, encadenarías los accesos a propiedades de esta manera:
+console.log(person.contact.phone.work); // "098-765-4321"
+// También puedes usar la notación de corchetes, que es particularmente útil cuando los nombres de propiedad incluyen espacios o caracteres especiales, o cuando estás usando variables para acceder a propiedades: 
+console.log(person['contact']['phone']['work']); // "098-765-4321"
+```
+- Ahora, echemos un vistazo a cómo podemos acceder a datos donde una de las propiedades del objeto tiene el valor de un arreglo. Aquí hay un objeto persona modificado que incluye un arreglo de direcciones:
+```js
+const person = {
+  name: "Alice",
+  age: 30,
+  addresses: [
+    { type: "home", street: "123 Main St", city: "Anytown" },
+    { type: "work", street: "456 Market St", city: "Workville" }
+  ]
+};
+// Aquí tienes un ejemplo de cómo acceder a la ciudad de la dirección de trabajo de Alice:
+console.log(person.addresses[1].city); // "Workville"
+```
+- En este ejemplo, persona.direcciones se refiere al arreglo de direcciones. Para acceder a la segunda dirección en ese arreglo, usamos la notación de corchetes e índice 1. Luego usamos la notación de puntos para acceder a la ciudad de ese objeto dirección.
+---
+### ¿Cuál es la diferencia entre tipos de datos primitivos y no primitivos?
+- Los tipos de datos primitivos son la forma más simple de datos en JavaScript. They include number, bigint, string, boolean, null, undefined, and symbol. Estos tipos se llaman "primitivos" porque representan valores únicos y no son objetos.
+- Cuando trabajas con tipos de datos primitivos, estás tratando directamente con sus valores. Por ejemplo, cuando creas una variable con un valor primitivo, ese valor se almacena directamente en la variable. 
+- Los valores primitivos son inmutables, lo que significa que una vez creados, su valor no puede cambiarse. Sin embargo, puedes reasignar un nuevo valor a la variable. Aquí tienes un ejemplo de trabajo con tipos de datos primitivos:
+```js
+let num1 = 5;
+let num2 = num1;
+num1 = 10;
+console.log(num2); // 5
+console.log(num1); // 10
+```
+- En este ejemplo, estamos asignando un valor primitivo (5) de num1 a num2. Esto crea una copia independiente del valor. Como resultado, cualquier cambio realizado en la variable original (num1) no afecta la copia (num2).
+- Los tipos de datos no primitivos, por otro lado, son más complejos. En JavaScript, estos son objetos, que incluyen objetos regulares, arreglos y funciones. A diferencia de los primitivos, los tipos no primitivos pueden contener múltiples valores como propiedades o elementos. Cuando creas una variable con un valor no primitivo, lo que se almacena en la variable es en realidad una referencia a la ubicación en memoria donde se almacena el objeto, no el objeto en sí. Esto lleva a algunas diferencias importantes en el comportamiento.
+```js
+const originalPerson = { name: "John", age: 30 };
+const copiedPerson = originalPerson;
+originalPerson.age = 31;
+console.log(copiedPerson.age); // 31
+```
+- En este ejemplo tenemos un objeto llamado originalPerson con dos propiedades de nombre y edad. Luego asignamos el objeto originalPerson a una variable llamada copiedPerson. Luego actualizamos el valor de edad para el objeto originalPerson. Cuando registramos la propiedad edad del objeto copiedPerson muestra el valor actualizado. Pero, ¿por qué está sucediendo eso? Esto ocurre porque tanto originalPerson como copiedPerson están haciendo referencia al mismo objeto en memoria.
+- En JavaScript, cuando asignas un objeto a otra variable, estás copiando la referencia al objeto, no el objeto en sí. Esto se conoce como copia superficial por referencia. Como resultado, cualquier cambio realizado en el objeto a través de una referencia se refleja en todas las referencias a ese objeto.
+---
+### ¿Cuál es la diferencia entre funciones y métodos objeto?
+- En JavaScript, las funciones y los métodos de objeto son formas de encapsular código reutilizable, pero tienen algunas diferencias clave en cómo se definen, utilizan y el contexto en el que operan.
+- Como aprendiste en módulos anteriores, las funciones son bloques de código reutilizables que realizan una tarea específica. Los métodos de objeto, por otro lado, son funciones asociadas a un objeto. Se definen como propiedades de un objeto y pueden acceder y manipular los datos del objeto.
+```js
+const person = {
+    name: "Bob",
+    age: 30,
+    sayHello: function() {
+        return "Hello, my name is " + this.name;
+    }
+};
+console.log(person.sayHello()); // "Hello, my name is Bob"
+```
+- En este ejemplo, sayHello es un método del objeto person. La palabra clave this permite que el método sayHello acceda a las propiedades del objeto llamado person. 
+- Una diferencia entre funciones y métodos es cómo se invocan. Las funciones se llaman por su nombre, mientras que los métodos se llaman usando la notación de punto en el objeto al que pertenecen. Por ejemplo, llamamos a la función greet como greet("Alice"), pero llamamos al método sayHello como person.sayHello().
+- Otra diferencia importante es el contexto en el que operan. Las funciones regulares tienen su propio ámbito, pero no tienen una referencia integrada a ningún objeto en particular. Sin embargo, los métodos están vinculados a su objeto y pueden acceder a sus propiedades y otros métodos usando la palabra clave this. Un punto clave a destacar es que los métodos ayudan a organizar el código en objetos lógicos, mientras que las funciones se utilizan para un código más general y reutilizable.
+---
+### ¿Qué es el constructor Object() y cuándo debe usarlo?
+- En JavaScript, un constructor es un tipo especial de función utilizada para crear e inicializar objetos. Se invoca con la palabra clave new y puede inicializar propiedades y métodos en el objeto recién creado. El constructor Object() crea un nuevo objeto vacío. Aquí hay un ejemplo: `new Object()`, cuando llamas a new Object(), retorna un nuevo objeto que puede utilizarse para almacenar valores. 
+- El constructor Object() puede utilizarse con o sin la palabra clave new. Cuando se llama como función sin new, se comporta de manera diferente dependiendo del tipo de valor que se le pase. Aquí tienes un ejemplo de cómo usar el constructor Object() sin la palabra clave new:
+```js
+const num = 42;
+const numObj = Object(num); // Creates an object wrapper for the number
+console.log(numObj); // Number { constructor: { name: "Number" } }
+console.log(typeof numObj); // "object"
+```
+- Como puedes ver en el segundo console.log, numObj es un objeto. Esto sucede porque usamos el constructor Object() para convertir esa entrada de número en un objeto. 
+- ¿Qué pasa si intentamos pasar null o undefined al constructor Object()?
+```js
+const newObj = new Object(undefined);
+console.log(newObj); // {}
+```
+- Bueno, el resultado será un objeto vacío. Otro caso de uso para el constructor Object() es cuando trabajas con un valor de tipo desconocido y necesitas asegurarte de que sea un objeto. 
+```js
+function toObject(value) {
+  if (value === null || value === undefined) {
+    return {};
+  }
+  if (typeof value === "object") {
+    return value;
+  }
+  return Object(value);
+}
+console.log(toObject(null));
+console.log(toObject(true));
+console.log(toObject([1, 2, 3]));
+```
+- En este ejemplo, tenemos una función llamada toObject. La segunda condición verificará si el valor es de tipo objeto y retornará el valor si la condición es true. Esta condición verificará tanto objetos como matrices, ya que las matrices son tipos especiales de objetos. Si ninguna de las condiciones es verdadera, la función devuelve Object(value), que convierte la entrada en un objeto. Esto funciona para valores como números, cadenas y booleanos. La mayoría de las veces no estarás usando el constructor Object() para crear nuevos objetos porque usarás la sintaxis literal de objetos en su lugar (e.g., const objectLiteral = { name: "Beau" }).
+---
+### 
