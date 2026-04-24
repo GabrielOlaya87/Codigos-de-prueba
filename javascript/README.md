@@ -1785,4 +1785,169 @@ console.log(toObject([1, 2, 3]));
 ```
 - En este ejemplo, tenemos una función llamada toObject. La segunda condición verificará si el valor es de tipo objeto y retornará el valor si la condición es true. Esta condición verificará tanto objetos como matrices, ya que las matrices son tipos especiales de objetos. Si ninguna de las condiciones es verdadera, la función devuelve Object(value), que convierte la entrada en un objeto. Esto funciona para valores como números, cadenas y booleanos. La mayoría de las veces no estarás usando el constructor Object() para crear nuevos objetos porque usarás la sintaxis literal de objetos en su lugar (e.g., const objectLiteral = { name: "Beau" }).
 ---
-### 
+### ¿Qué es JSON y cómo accedes a los valores usando notación de corchetes y notación de puntos?
+- JSON significa Notación de Objetos de JavaScript. Es un formato de datos ligero, basado en texto, que se usa comúnmente para intercambiar datos entre un servidor y una aplicación web. Una de las razones por las cuales JSON es tan popular en el desarrollo web es porque es tanto parseable por máquina como legible por humanos. Dado que JSON es independiente del lenguaje, puedes enviar fácilmente datos JSON desde una aplicación Java a una aplicación Python, o desde una aplicación JavaScript a una aplicación C#. JSON soporta muchos tipos de datos incluyendo objetos, arreglos, cadenas, booleanos, nulo y números. Aquí hay un ejemplo de un objeto JSON:
+```js
+{
+  "name": "Alice",
+  "age": 30,
+  "isStudent": false,
+  "list of courses": ["Mathematics", "Physics", "Computer Science"]
+}
+```
+- Como puedes ver, JSON usa pares de clave-valor para almacenar información y cada par está separado por una coma. Cada clave debe estar envuelta en comillas dobles, de lo contrario recibirás un error. Para acceder a los datos de un objeto JSON, puedes usar la notación de puntos o de corchetes. En este ejemplo, estamos usando la notación de puntos para acceder a la age del objeto JSON:
+```js
+import data from "./example.json" with { type: "json" };
+console.log(data.age);
+```
+- Este ejemplo en particular está usando lo que se conoce como una sentencia import, que importa el objeto JSON en este archivo para que tengamos acceso a él. Aprenderás más sobre la sentencia import en una lección futura. También puedes usar la notación de corchetes para acceder a la información de los objetos JSON. Aquí hay un ejemplo de cómo acceder al arreglo list of courses:
+```js
+import data from "./example.json" with { type: "json" };
+console.log(data["list of courses"]);
+```
+- Usar la notación de corchetes es especialmente útil aquí porque la clave contiene varias palabras separadas por espacios. Si intentáramos usar la notación de puntos, resultaría en un error. En resumen, JSON es un formato versátil que puede almacenar muchos tipos de datos, incluidos arreglos y objetos anidados. Usando la notación de puntos o de corchetes, puedes acceder fácilmente a los valores almacenados dentro de un objeto JSON.
+---
+### ¿Cómo funcionan JSON.parse() y JSON.stringify()?
+- Hay dos métodos potentes en JavaScript para manejar datos JSON: JSON.parse() y JSON.stringify(). Estos métodos se utilizan comúnmente para convertir entre cadenas JSON y objetos de JavaScript.
+- JSON.stringify(): se usa para convertir un objeto de JavaScript en una cadena JSON. Esto es útil cuando deseas almacenar o transmitir datos en un formato que pueda compartirse o transferirse fácilmente entre sistemas.
+```js
+const user = {
+  name: "John",
+  age: 30,
+  isAdmin: true
+};
+const jsonString = JSON.stringify(user);
+console.log(jsonString); // "{"name":"John","age":30,"isAdmin":true}"
+console.log(user); // { name: "John", age: 30, isAdmin: true }
+```
+- El método JSON.stringify() también acepta un parámetro opcional llamado replacer, que puede ser una función o un arreglo. He aquí un ejemplo de uso de un arreglo para el parámetro opcional replacer:
+```js
+const developerObj = {
+  firstName: "Jessica",
+  isAwesome: true,
+  isMusician: true,
+  country: "USA",
+};
+console.log(JSON.stringify(developerObj, ["firstName", "country"]));// result: {"firstName":"Jessica","country":"USA"}
+console.log(developerObj); // { firstName: "Jessica", isAwesome: true, isMusician: true, country: "USA" }
+```
+- En este ejemplo, tenemos un developerObj con cuatro propiedades. Cuando usamos el método JSON.stringify(), podemos pasar un arreglo como segundo parámetro y especificar qué propiedades queremos convertir en cadena. El resultado será un objeto en forma de cadena que contiene solo las propiedades firstName y country.
+- Otro parámetro opcional para el método JSON.stringify() sería el parámetro spacer. Esto te permite controlar el espaciado del resultado convertido en cadena:
+```js
+const developerObj = {
+  firstName: "Jessica",
+  isAwesome: true,
+  isMusician: true,
+  country: "USA",
+};
+console.log(JSON.stringify(developerObj, null, 2));
+/*
+{
+  "firstName": "Jessica",
+  "isAwesome": true,
+  "isMusician": true,
+  "country": "USA"
+}
+*/
+```
+- La mayoría de las veces no usarás ninguno de estos parámetros opcionales para el método JSON.stringify(), pero sigue siendo útil estar al tanto de ellos. Otro método que usarás mucho en tu programación es el método JSON.parse() que convierte una cadena JSON de nuevo en un objeto JavaScript. Esto es útil cuando recuperas datos JSON de un servidor web o de localStorage y necesitas manipular los datos en tu aplicación. Aprenderás más sobre localStorage en una lección futura.
+```js
+const jsonString = '{"name":"John","age":30,"isAdmin":true}';
+const userObject = JSON.parse(jsonString);
+console.log(userObject); // { name: 'John', age: 30, isAdmin: true }
+```
+- Esto te permite trabajar con los datos en tu programa como un objeto de JavaScript normal, lo que facilita su manipulación y uso.
+---
+### ¿Qué es el Operador de Encadenamiento Opcional, y Cómo Funciona?
+- El operador de encadenamiento opcional (?.) es una herramienta útil en JavaScript que te permite acceder de forma segura a propiedades de objetos o llamar métodos sin preocuparte de si existen. Es como una red de seguridad para trabajar con objetos que podrían tener partes faltantes.
+```js
+const person = {
+  name: "Alice",
+  age: 30
+};
+console.log(person.name); // "Alice"
+console.log(person.job); // undefined
+```
+- En este ejemplo, person.name existe, así que muestra Alice. Pero person.job no existe, por lo que nos da undefined. Ahora, digamos que queremos acceder a una propiedad de un objeto que podría no existir:
+```js
+const person = {
+  name: "Alice",
+  age: 30
+};
+console.log(person.address.street); // This will throw an error!
+```
+- Este ejemplo generará un Uncaught TypeError. Dado que person.address es undefined, no podemos acceder a la propiedad street. Aquí es donde el operador de encadenamiento opcional resulta útil.
+```js
+const user = {
+  name: "John",
+  profile: {
+    email: "john@example.com",
+    address: {
+      street: "123 Main St",
+      city: "Somewhere"
+    }
+  }
+};
+console.log(user?.profile?.address?.street); // "123 Main St"
+console.log(user?.profile?.phone?.number);   // undefined
+```
+- Al usar el operador de encadenamiento opcional, le indicamos a JavaScript que solo continúe con la operación si el objeto (o el valor antes de ?.) existe y no es null o undefined. Si el valor antes del ?. es null o undefined, JavaScript devuelve undefined en lugar de intentar continuar with la operación y generar un error. Recuerda, el operador de encadenamiento opcional es más útil cuando no estás seguro de si una propiedad o un método existe. Ayuda a prevenir errores y hace que tu código sea más robusto.
+---
+### ¿Qué es la desestructuración de objetos y cómo funciona?
+-  La desestructuración de objetos es una característica poderosa en JavaScript que te permite extraer valores de objetos y asignarlos a variables de una manera más concisa y legible. Forma parte de la especificación ES6 (ECMAScript 2015) y se ha convertido en una herramienta esencial para muchos desarrolladores de JavaScript. La desestructuración puede simplificar tu código, especialmente al trabajar con objetos complejos o cuando necesitas extraer múltiples valores de una vez. En su núcleo, la desestructuración de objetos se trata de desempaquetar valores de objetos en variables distintas. En lugar de acceder a las propiedades del objeto una por una, puedes extraer múltiples propiedades en una sola declaración. Esto puede hacer que tu código sea más limpio y eficiente.
+```js
+const person = { name: "Alice", age: 30, city: "New York" };
+const { name, age } = person;
+console.log(name); // Alice
+console.log(age);  // 30
+```
+- En este ejemplo, estamos extrayendo las propiedades name y age del objeto person y asignándolas a variables con los mismos nombres. Uno de los aspectos poderosos de la desestructuración de objetos es que puedes asignar los valores extraídos a variables con nombres diferentes. Esto es particularmente útil cuando trabajas con objetos cuyos nombres de propiedades pueden entrar en conflicto con variables existentes o cuando deseas usar un nombre diferente:
+```js
+let person = { name: "Alice", age: 30, city: "New York" };
+let { name: personName, age: personAge } = person;
+console.log(personName); // Alice
+console.log(personAge); //  30
+```
+- En este caso, estamos extrayendo la propiedad name y asignándola a una variable llamada personName, y haciendo lo mismo con age y personAge.
+- La desestructuración de objetos también te permite establecer valores predeterminados. Si una propiedad no existe en el objeto que estás desestructurando, puedes especificar un valor de respaldo:
+```js
+let person = { name: "Alice", age: 30, city: "New York" };
+let { name, age, country = "Unknown" } = person;
+console.log(country); // Unknown
+```
+- Aquí, dado que country no existe en nuestro objeto person, obtiene el valor predeterminado Unknown.
+- Otro caso común es la desestructuración de objetos anidados. Puedes desestructurar propiedades anidadas dentro de otros objetos usando otro conjunto de llaves:
+```js
+const recipe = {
+  name: "Chocolate Cake",
+  ingredients: {
+    flour: "2 cups",
+    sugar: "1 cup"
+  }
+};
+const { ingredients: { flour } } = recipe; // Extract `flour` from `ingredients`
+console.log(flour); // "2 cups"
+```
+- Esto es equivalente a acceder a la propiedad directamente:
+```js
+const flour = recipe.ingredients.flour;
+console.log(flour); // "2 cups"
+```
+- Ahora, hablemos sobre la notación abreviada en la desestructuración de objetos. Cuando estás creando objetos, especialmente cuando los nombres de propiedades coinciden con los nombres de variables, puedes usar una sintaxis abreviada:
+```js
+let name = "Bob";
+let age = 25;
+let person = { name, age };
+console.log(person); // { name: "Bob", age: 25 }
+```
+- El código anterior toma las propiedades con el mismo nombre que nuestras variables y les asigna los valores de esas variables. Esta notación abreviada es particularmente útil cuando estás devolviendo objetos desde funciones o creando objetos con múltiples propiedades:
+```js
+function createPerson(name, age) {
+  return { name, age };
+}
+let person = createPerson("Charlie", 35);
+console.log(person); // { name: "Charlie", age: 35 }
+```
+- La desestructuración de objetos y la notación de objeto abreviada son características poderosas que pueden hacer que tu código sea más conciso y fácil de leer. Son especialmente útiles cuando trabajas con estructuras de datos complejas, o cuando necesitas pasar múltiples parámetros a funciones.
+---
+###
