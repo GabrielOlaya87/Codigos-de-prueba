@@ -2153,4 +2153,175 @@ outerLoop: for (let i = 0; i < 3; i++) {
 - En este ejemplo, tenemos un bucle externo con la etiqueta outerLoop y un bucle interno con la etiqueta innerLoop. Cuando i es igual a 1 y j es igual a 1, usamos la declaración break con la etiqueta outerLoop para salir del bucle externo antes. Esto saldrá de ambos bucles, el interno y el externo.
 - La mayoría de las veces no encontrarás la necesidad de utilizar etiquetas con las declaraciones break y continue, pero es bueno saber que tienes esa opción si alguna vez la necesitas.
 ---
+## ¿Qué es un objeto de cadena y cómo se diferencia de un string primitivo?
+- JavaScript también tiene objetos de cadena. Tanto los objetos de cadena como los string primitivos se utilizan para manejar texto, pero funcionan de manera diferente internamente. Un objeto de cadena se crea usando la función constructor de cadenas, que envuelve el valor primitivo en un objeto. Así es como crearías un objeto de cadena:
+```js
+const greetingObject = new String("Hello, World!");
+console.log(typeof greetingObject); // "object"
+```
+- Una diferencia clave entre un objeto de cadena y un string primitivo es cómo se relaciona con la memoria y el rendimiento. Los string primitivos suelen ser más eficientes en términos de memoria y más rápidos en comparación con los objetos de cadena.
+---
+### ¿Qué es el método toString() y cómo funciona?
+- toString() es una característica fundamental en JavaScript que convierte un valor en su representación en forma de cadena. Es un método que puedes usar para números, booleanos, arreglos y objetos. Uno de los usos más comunes de toString() es convertir un número en su representación en forma de cadena.
+```js
+const num = 10;
+console.log(num.toString()); // "10"
+```
+- Este método acepta un radix opcional que es un número del 2 al 36. Este radix representa la base, como la base 2 para binario o base 8 para octal. Si el radix no se especifica, por defecto es la base 10, que es decimal. Aquí hay un ejemplo de pasar 2 como un argumento al método toString():
+```js
+const num = 10;
+console.log(num.toString(2)); // "1010"
+```
+- El resultado será 1010, que es la representación binaria del número decimal 10.
+- También puedes usar el método toString() para convertir arreglos y objetos en cadenas. Los arreglos tienen una implementación personalizada de toString() que convierte cada elemento en una cadena y los une con comas:
+```js
+const arr = [1, 2, 3];
+console.log(arr.toString()); // "1,2,3"
+```
+- En este ejemplo todos los elementos del arreglo se unen para formar la cadena 1,2,3.
+- Cuando se utiliza el método toString() con objetos, el resultado no será una versión en cadena de las propiedades del objeto.
+```js
+const person = {
+  name: "John",
+  age: 30,
+  isStudent: true
+};
+console.log(person.toString()); // "[object Object]"
+```
+- En este ejemplo, el resultado será la representación en cadena predeterminada para el objeto que es [object Object]. Para obtener una versión en cadena de las propiedades del objeto person necesitarás usar JSON.stringify(), sobre lo cual aprenderás más en las lecciones futuras.
+- En conclusión, el método toString() se usa para convertir valores en cadenas. Comprender cómo funciona con diferentes tipos de datos y cómo personalizarlo para tus propios objetos puede mejorar significativamente tu capacidad para manipular y mostrar datos en tus aplicaciones de JavaScript.
+---
+### ¿Qué es el constructor Number y cómo funciona para la coerción de tipos?
+- Number() se utiliza para crear un objeto número. The number object contains a few helpful properties and methods like the isNaN and the toFixed method. Aquí tienes un ejemplo usando el constructor Number() con la palabra clave new:
+```js
+const myNum = new Number("34");
+console.log(typeof myNum); // "object" 
+```
+- En este ejemplo, pasamos una cadena literal al constructor Number() y el tipo de retorno es de tipo objeto en lugar de una cadena.
+- Cuando se llama al constructor Number() como una función sin la palabra clave new, entonces el valor de retorno será el tipo de número primitivo. La mayoría de las veces usarás el constructor Number() para convertir otros tipos de datos al tipo de dato número.
+```js
+const myNum = Number("100");
+console.log(myNum); // 100
+console.log(typeof myNum); // number
+```
+- Esto es útil cuando recibes entradas del usuario y necesitas convertir esa entrada de cadena a un número para realizar cálculos matemáticos.
+- Si intentas llamar al constructor Number() a través de una cadena vacía, el resultado será el número 0: `const num = Number(""); console.log(num); // 0`
+- Esto es porque JavaScript intentará analizar la cadena y como no contiene ningún dígito, el resultado será cero. Si intentas pasar una cadena con caracteres aleatorios, el resultado será NaN. `const num = Number("random"); console.log(num); // NaN`.
+- Al trabajar con booleanos, true devuelve 1 porque true se convierte a uno y false devuelve 0 porque false se convierte a cero.
+```js
+const boolTrue = Number(true);
+const boolFalse = Number(false);
+console.log(boolTrue); // 1
+console.log(boolFalse); // 0
+```
+- Si pasas null, el resultado será 0 y si pasas undefined, el resultado será NaN.
+```js
+const undefinedNum = Number(undefined);
+const nullNum = Number(null);
+console.log(undefinedNum); // NaN
+console.log(nullNum); // 0
+```
+- Al trabajar con arreglos hay algunas cosas que considerar. Un arreglo vacío devolverá 0. Un arreglo con un solo número devolverá ese número. Un arreglo con múltiples números devuelve NaN. Y un arreglo con cadena(s) también devolverá NaN.
+```js
+const emptyArr = Number([]);
+const arrOneNum = Number([7]);
+const arrMultiNum = Number([7, 36, 12]);
+const arrStr = Number(["str1"]);
+const arrMultiStr = Number(["str1", "str2"]);
+console.log(emptyArr); // 0
+console.log(arrOneNum); // 7
+console.log(arrMultiNum); // NaN
+console.log(arrStr); // NaN
+console.log(arrMultiStr); // NaN
+```
+- Al trabajar con objetos, el resultado es siempre NaN.
+- En conclusión, usarás principalmente el constructor Number() para la conversión de tipos más que para crear un número o un objeto número.
+---
+### ¿Cuáles son algunas prácticas comunes para nombrar variables y funciones?
+- Nombrar variables y funciones es un aspecto importante de escribir código limpio, legible y mantenible. Las buenas prácticas de nomenclatura hacen que tu código se autocomente, reduciendo la necesidad de comentarios extensos y facilitando que otros desarrolladores, incluido tu futuro yo, entiendan tu código.
+- Comencemos con las convenciones generales de nomenclatura en JavaScript. In previous lessons you learned about using camel case for variable names. 
+- Para las variables booleanas, es una práctica común usar prefijos como is, has o can. Esto le indica inmediatamente al lector que la variable es un booleano:
+```js
+let isLoading = true;
+let hasPermission = false;
+let canEdit = true;
+```
+-Para las funciones, el nombre debe indicar claramente lo que hace la función. A menudo es útil comenzar con un verbo:
+```js
+function getUserData(){}
+function calculateTotal(){}
+function validateInput(){}
+```
+- Para las funciones que devuelven un booleano, a menudo llamadas predicados, puedes usar los mismos prefijos is, has o can:
+```js
+function isValidEmail(email) {}
+function hasRequiredFields(form) {}
+```
+- Cuando tienes funciones que obtienen datos, es común comenzar con la palabra get:
+```js
+function getProductDetails(productId) {}
+function getUserProfile(userId) {}
+```
+- Cuando tienes funciones que asignan datos, es común comenzar con la palabra set:
+```js
+function setUserPreferences(preferences) {}
+function setPageTitle(title) {}
+```
+- Para las funciones manejadoras de eventos, podrías utilizar el prefijo handle o el sufijo handler:
+```js
+function handleClick(){}
+function onSubmit(){}
+function keyPressHandler(){}
+```
+- Un manejador de eventos es una acción que ocurre después de que un evento ha sucedido, como un clic en un botón.
+- Al nombrar variables iteradoras y bucles, es común usar letras individuales como i, j o k, pero para bucles anidados o iteraciones más complejas, nombres más descriptivos pueden ser útiles:
+```js
+for (let i = 0; i < array.length; i++) {}
+for (let studentIndex = 0; studentIndex < students.length; studentIndex++) {}
+```
+- Para nombres de arreglos, considera usar sustantivos en plural para indicar que la variable contiene múltiples elementos:
+```js
+const colors = ['red', 'green', 'blue'];
+const userNames = ['Alice', 'Bob', 'Charlie'];
+```
+- Recuerda que el objetivo es hacer que tu código sea lo más autoexplicativo posible. Una buena regla general es que si necesitas agregar un comentario para explicar qué hace una variable o función, podrías considerar renombrarla a algo más descriptivo. Por último, sé consistente con tu base de código o equipo. Si tu equipo ha establecido convenciones de nomenclatura, adhiérete a ellas. La consistencia hace que el código sea más legible y mantenible para todos los involucrados.
+---
+### ¿Cómo obtienes la longitud de una matriz y cómo puedes crear una matriz vacía de longitud fija?
+- Es posible tener matrices con espacios vacíos. Los espacios vacíos se definen como espacios sin nada dentro. Esto es diferente de una matriz con el valor de undefined. Estos tipos de matrices se conocen como matrices dispersas. Aquí hay un ejemplo:
+```js
+const sparseArray = [1, , , 4];
+console.log(sparseArray.length); // 4
+```
+- En este caso, aunque solo tenemos dos elementos definidos, 1 y 4, la longitud es 4 porque el índice más alto (3) más 1 nos da una longitud de 4.
+- cómo crear una matriz vacía de longitud fija. Hay pocas formas de hacer esto en JavaScript, pero un método común es usar el constructor Array() con un argumento numérico. El constructor Array() se puede usar con la palabra clave new para crear una nueva matriz. 
+```js
+const emptyArray = new Array(5);
+console.log(emptyArray.length); // 5
+console.log(emptyArray); // [ , , , , ]
+```
+- En este ejemplo, creamos un nuevo arreglo usando Array(5). Esto crea un arreglo disperso con una longitud de 5 donde todos los espacios están vacíos.
+- Otra forma de crear un arreglo vacío de longitud fija es usar el método Array.from() con un argumento de longitud. A diferencia de new Array(n), este método crea un arreglo de la longitud especificada donde todos los elementos existen y tienen un valor de undefined:
+```js
+const fixedLengthArray = Array.from({ length: 5 });
+console.log(fixedLengthArray.length); // 5
+console.log(fixedLengthArray); // [undefined, undefined, undefined, undefined, undefined]
+```
+- Si deseas crear un arreglo de longitud específica y llenarlo con un valor predeterminado, puedes usar el método Array.fill():
+```js
+const filledArray = new Array(3).fill(0);
+console.log(filledArray); // [0, 0, 0]
+```
+- Esto crea un arreglo de longitud tres y llena todos los elementos con el valor 0. Nota: al llenar con objetos, todas las posiciones hacen referencia al mismo objeto; si necesitas copias independientes, usa una función de devolución de llamada o Array.from() en su lugar. Entender cómo obtener la longitud de una matriz y crear matrices de longitud fija es importante para muchas tareas de programación, especialmente cuando necesitas inicializar matrices para algoritmos o estructuras de datos específicos.
+---
+### ¿Qué son los linters y los formateadores, y cómo pueden ayudarte con la consistencia del código?
+- En el mundo del desarrollo de software, mantener código limpio, consistente y libre de errores es importante. Aquí es donde entran en juego los linters y los formateadores. Estas herramientas son esenciales para los desarrolladores para asegurar la calidad y consistencia del código a lo largo de proyectos y equipos.
+- linter: es una herramienta de análisis estático de código que señala errores de programación, bugs, errores de estilo y estructuras sospechosas. El término lint proviene de una utilidad Unix que examina el código fuente del lenguaje C. Ayudan de varias formas. Primero, detectan potenciales errores antes de la ejecución. Por ejemplo, un linter podría señalar el uso de una variable indefinida o una función llamando con un número incorrecto de argumentos. También imponen estándares de codificación y mejores prácticas. Esto podría incluir reglas sobre la indentación, el uso de punto y coma, o la longitud máxima permitida de línea. Por último, ayudan a mantener la consistencia a lo largo de un código base, especialmente cuando varios desarrolladores trabajan en el mismo proyecto.
+- Un linter popular para JavaScript es `ESLint`.
+- Formateadores: son herramientas que formatean automáticamente tu código para adherirse a una guía de estilo específica. Mientras que los linters a menudo pueden corregir automáticamente algunos problemas, los formateadores están diseñados específicamente para reescribir tu código para coincidir con un estilo predefinido.
+- Los formateadores aseguran un estilo de código consistente en todo el proyecto o equipo, independientemente de las preferencias del desarrollador individual. También ahorran tiempo y energía mental que de otro modo se gastaría en formateo manual. Por último, pueden hacer que las revisiones de código sean más eficientes al eliminar discusiones sobre el estilo de código.
+- Un formateador popular para JavaScript es `Prettier`.
+- Pueden incluirse en tu proceso de construcción o añadirse como plugins a tu editor de texto o IDE, proporcionando retroalimentación en tiempo real a medida que codificas. Usar linters y formateadores juntos puede mejorar significativamente la calidad y consistencia del código. Por ejemplo, podrías utilizar ESLint para detectar potenciales errores e imponer ciertas prácticas de codificación, y luego usar Prettier para manejar todas las tareas de formateo.
+- Muchos equipos de desarrollo configuran estas herramientas como parte de su configuración de proyecto, a menudo con ganchos pre-commit que ejecutan el linter y el formateador antes de permitir que el código sea comprometido. Esto asegura que todo el código en el repositorio cumpla con los estándares del equipo para calidad y estilo.
+- En resumen, los linters y formateadores son herramientas poderosas que ayudan a mantener la calidad del código, detectar posibles errores tempranos y asegurar la consistencia a lo largo de los códigos base. Automatizando estos aspectos de la revisión de código, permiten a los desarrolladores enfocarse más en resolver problemas y menos en debatir sobre el estilo del código.
+---
 ### 
