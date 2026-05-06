@@ -2324,4 +2324,74 @@ console.log(filledArray); // [0, 0, 0]
 - Muchos equipos de desarrollo configuran estas herramientas como parte de su configuración de proyecto, a menudo con ganchos pre-commit que ejecutan el linter y el formateador antes de permitir que el código sea comprometido. Esto asegura que todo el código en el repositorio cumpla con los estándares del equipo para calidad y estilo.
 - En resumen, los linters y formateadores son herramientas poderosas que ayudan a mantener la calidad del código, detectar posibles errores tempranos y asegurar la consistencia a lo largo de los códigos base. Automatizando estos aspectos de la revisión de código, permiten a los desarrolladores enfocarse más en resolver problemas y menos en debatir sobre el estilo del código.
 ---
-### 
+### ¿Qué es la gestión de memoria y cómo funciona en JavaScript?
+- JavaScript gestiona la memoria automáticamente mediante un proceso llamado recolección de basura (garbage collection). 
+- Asignación: Cuando creas variables, objetos o funciones, el motor les reserva espacio automáticamente.
+- Uso: Utilizas ese espacio mientras trabajas con tus datos.
+- Liberación: El motor detecta periódicamente qué datos ya no son accesibles o necesarios y libera ese espacio para que pueda usarse de nuevo.
+- Sin embargo, es importante entender este concepto porque a veces puedes mantener accidentalmente referencias a cosas que ya no necesitas, impidiendo que el recolector de basura libere esa memoria. 
+```js
+function createLargeArray() {
+  let largeArray = new Array(1000000);
+  return function() {
+    console.log(largeArray.length);
+  };
+}
+let printArrayLength = createLargeArray();
+printArrayLength();
+```
+- En este código, incluso después de que createLargeArray termina de ejecutarse, largeArray no puede ser recolectado por el recolector de basura porque la función devuelta aún tiene acceso a él. Esto es un cierre, y aunque los cierres son útiles, a veces pueden llevar a un mayor uso de memoria del que podrías esperar. 
+- Las buenas prácticas de codificación, como evitar variables globales cuando sea posible y ser consciente de lo que tus funciones están cerrando, pueden ayudar al motor de JavaScript a gestionar la memoria de manera más eficiente.
+---
+### ¿Qué son los closures y cómo funcionan?
+- En su núcleo, un cierre es una función que tiene acceso a variables en su ámbito léxico envolvente externo, incluso después de que la función externa haya retornado. Para entender los closures, comencemos con un ejemplo:
+```js
+function outerFunction(x) {
+    let y = 10;
+    function innerFunction(){
+        console.log(x + y);
+    }
+    return innerFunction;
+}
+let closure = outerFunction(5);
+console.log(closure()); // 15
+```
+- En este ejemplo, outerFunction toma un parámetro x y define una variable local y. Entonces define una innerFunction que utiliza tanto x como y. Finalmente, retorna innerFunction. Cuando llamamos a outerFunction(5) retorna innerFunction, lo cual asignamos a la variable closure. Cuando más tarde llamamos a closure(), todavía tiene acceso a x y y de outerFunction, incluso después de que outerFunction haya terminado de ejecutarse. Esta es la esencia de un closure. La función interna mantiene una referencia a su entorno léxico externo, preservando el acceso a las variables en ese entorno incluso después de que la función externa haya terminado. Los closures son particularmente útiles para crear variables y funciones privadas:
+```js
+function createCounter() {
+    let count = 0;
+    return function () {
+        count++;
+        return count;
+    };
+}
+let counter = createCounter();
+console.log(counter()); // 1
+console.log(counter()); // 2
+```
+- En este caso, createCounter retorna una función que incrementa y retorna una variable count. La variable count no es accesible directamente desde el exterior de createCounter, pero la función retornada (nuestro closure) tiene acceso a ella. Cada vez que llamamos a counter(), incrementa y retorna el count.
+- Los closures también pueden capturar múltiples variables de su ámbito externo:
+```js
+function multiply(x) {
+    return function (y) {
+        return x * y;
+    };
+}
+let double = multiply(2);
+console.log(double(5)); // 10
+```
+- Aquí, la función interna captura el parámetro x de multiply. Cuando creamos double llamando a multiply(2) retorna una función que siempre multiplica su argumento por 2.
+- Una cosa importante a observar sobre los closures es que éstos capturan variables, por referencia no por valor. Esto significa que si el valor de una variable capturada cambia, el closure verá el nuevo valor:
+```js
+function createIncrementer() {
+    let count = 0;
+    return function () {
+        count++;
+        console.log(count);
+    };
+}
+let increment = createIncrementer();
+increment(); // 1
+increment(); // 2
+```
+- Cada vez que llamamos a increment está trabajando con la misma variable count, no con una copia de su valor inicial.
