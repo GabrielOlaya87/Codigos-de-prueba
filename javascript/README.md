@@ -76,32 +76,21 @@ console.log("Hi there!");
 console.log("I am excited to talk to you.");
 let bot;
 bot = "teacherBot";
-
 let botLocation = "the universe";
-
 console.log("Allow me to introduce myself.");
-
 const botIntroduction = "My name is " + bot + ".";
 console.log(botIntroduction);
-
 const botLocationSentence = "I live in " + botLocation + ".";
 console.log(botLocationSentence);
-
 bot = "professorBot";
-
 const nicknameIntroduction = "My nickname is " + bot + ".";
 console.log(nicknameIntroduction);
-
 bot = "awesomeTeacherBot";
-
 const newNicknameGreeting = "I love my nickname but I wish people would call me " + bot + ".";
 console.log(newNicknameGreeting);
-
 const favoriteSubject = "Computer Science";
-
 const favoriteSubjectSentence = "My favorite subject is " + favoriteSubject + ".";
 console.log(favoriteSubjectSentence);
-
 console.log("Well, it was nice to talk to you. Have a nice day!");
 ```
 ---
@@ -422,7 +411,6 @@ console.log(result); // 11
 ```js
 let a, b;
 a = b = 5;
-
 console.log(a); // 5
 console.log(b); // 5
 console.log(a + b); // 10
@@ -450,7 +438,6 @@ console.log(y); // 6
 let x = 5;
 console.log(--x); // 4
 console.log(x); // 4
-
 let y = 5;
 console.log(y--); // 5
 console.log(y); // 4
@@ -460,7 +447,6 @@ console.log(y); // 4
 let a = 5;
 let b = ++a;
 console.log(b); // 6 (a was incremented before assignment)
-
 let c = 5;
 let d = c++;
 console.log(d); // 5 (c was incremented after assignment)
@@ -667,7 +653,6 @@ console.log(a >> 1);  // 2 (Binary: 10)
 if (null) {
   console.log("This will not run.");
 }
-
 if ("freeCodeCamp") {
   console.log("This will run.");
 }
@@ -687,7 +672,6 @@ else {
 - Si deseas verificar múltiples condiciones, puedes usar un bloque else if. Esto le permite a tu programa elegir entre más de dos caminos.
 ```js
 const score = 87;
-
 if (score >= 90) {
  console.log('You got an A'); 
 } else if (score >= 80) {
@@ -2395,3 +2379,26 @@ increment(); // 1
 increment(); // 2
 ```
 - Cada vez que llamamos a increment está trabajando con la misma variable count, no con una copia de su valor inicial.
+---
+### ¿Qué es la elevación?
+- En términos simples, la elevación es el comportamiento predeterminado de JavaScript de mover declaraciones al inicio de sus respectivos ámbitos durante la fase de compilación antes de que se ejecute el código.
+- Para entender la elevación, es importante saber que JavaScript se ejecuta en dos fases: la fase de compilación y la fase de ejecución. Durante la fase de compilación, el motor de JavaScript revisa tu código y establece espacio en memoria para variables y funciones. Aquí es donde entra en juego la elevación.
+- elevación de variables. Cuando declaras una variable usando la palabra clave var, JavaScript eleva la declaración al inicio de su ámbito. Sin embargo, es crucial notar que solo la declaración es elevada, no la inicialización. Esto significa que puedes usar una variable en tu código antes de declararla, pero su valor será undefined hasta que le asignes un valor.
+```js
+console.log(x); // undefined
+var x = 5;
+console.log(x); // 5
+```
+- En este código, aunque usamos x antes de declararlo, no obtenemos un error, sino undefined. Esto es porque JavaScript eleva la declaración var x al inicio de su ámbito pero no la inicialización x = 5. Es como si el código se reescribiera de esta manera:
+- La elevación de funciones funciona de manera un poco diferente. Cuando declaras una función usando la sintaxis de declaración function, tanto el nombre de la función como el cuerpo de la función son elevados. Esto significa que puedes llamar a una función antes de haberla declarado en tu código. Aquí tienes un ejemplo de elevación de funciones:
+```js
+sayHello(); // "Hello, World!"
+function sayHello(){
+  console.log("Hello, World!");
+}
+```
+- En este caso, podemos llamar a sayHello() antes de su declaración porque toda la función es elevada al inicio de su ámbito. Es importante notar que la elevación funciona de manera diferente con las declaraciones let y const. 
+- Estas declaraciones son elevadas pero no son inicializadas y no puedes acceder a ellas antes de la declaración real en tu código. Esto se llama a menudo la zona muerta temporal. Comprender la elevación puede ayudarte a escribir código más claro y predecible. Sin embargo, depender de la elevación puede hacer que tu código sea más difícil de leer y mantener. Como buena práctica, se recomienda declarar tus variables al inicio de su ámbito y tus funciones antes de usarlas, independientemente de la elevación.
+---
+### 
+
